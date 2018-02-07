@@ -1,5 +1,6 @@
 body {
   background-color: #F8E9E9;
+  font-family: 'Nanum Pen Script', cursive;
 
   h1 {
     color: #244751;
@@ -7,16 +8,32 @@ body {
 }
 
 nav {
+  height: 80px;
   width: 100%;
   text-align: center;
+  padding: 0px 2em;
+  background-color: #FDA129;
+  z-index: 1;
+
+  button {
+    float: right;
+    overflow: auto;
+    margin-top: 10px;
+  }
+
+  span {
+    font-size: 50px;
+  }
 }
 
 #main {
   .container-fluid {
     .col {
       background-color: #F4F4F4;
-      padding: 15px;
+      margin: 20px;
+      padding: 5px;
       border: 2px solid black;
+      heigh: 90%;
     }
   }
 }
