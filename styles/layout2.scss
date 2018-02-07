@@ -1,0 +1,22 @@
+body {
+  background-color: #F8E9E9;
+
+  h1 {
+    color: #244751;
+  }
+}
+
+nav {
+  width: 100%;
+  text-align: center;
+}
+
+#main {
+  .container-fluid {
+    .col {
+      background-color: #F4F4F4;
+      padding: 15px;
+      border: 2px solid black;
+    }
+  }
+}
