@@ -1,7 +1,23 @@
 body {
-  background-color: #EEE;
+  background-color: #F8E9E9;
 
   h1 {
     color: #244751;
   }
+}
+
+.dropdown-header {
+  position: fixed;
+  height: 80px;
+  width: 100%;
+  background-color: #CC4D4D;
+  color: #e8fdff;
+  padding: 0px 2em;
+  z-index: 1;
+  text-align: center;
+  font-size: 20px
+}
+
+article {
+  color: #DC4B4B
 }
