@@ -5,7 +5,7 @@ exports.seed = function(knex, Promise) {
         knex('users').insert({id: 1, name: 'Alice'}),
         knex('users').insert({id: 2, name: 'Bob'}),
         knex('users').insert({id: 3, name: 'Charlie'}),
-        knex('users').insert({id: 4, name: 'Josh'}),
+        knex('users').insert({id: 3, name: 'Josh'}),
       ]);
     });
 };

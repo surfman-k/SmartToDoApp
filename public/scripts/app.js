@@ -1,10 +1,10 @@
 // $(() => {
 //   $.ajax({
 //     method: "GET",
-//     url: "/api/users"
-//   }).done((users) => {
-//     for(let user of users) {
-//       $("<div>").text(user.name).appendTo($("body"));
+//     url: "/api/todoList"
+//   }).done((todoList) => {
+//     for(let obj of todoList) {
+//       console.log(obj);
 //     }
 //   });
 // });
@@ -12,7 +12,7 @@
 $(document).ready(function() {
 
   function renderToDo(incoming) {
-    for (let i = 1; i < 10; i++) {
+    for (let i = 1; i < 2; i++) {
       // console.log($(".movies .list-group"));
       $(".movies .list-group").append(createToDoElement());
       $(".books .list-group").append(createToDoElement());
