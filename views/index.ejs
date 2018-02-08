@@ -35,7 +35,8 @@
     <span>Project Konjosh</span>
     <button id="newToDo" class="btn-lg" name="New To Do" onclick="document.getElementById('id02').style.display='block'" > Add to do </button>
     <!-- Button will lead to Login or registration page. Dissapears when logged in and the name of user instead -->
-    <button id="loginB" class="btn-lg" name="login" onclick="document.getElementById('id01').style.display='block'">Login/Register</button>
+    <button id="loginB" class="btn-lg" name="login" onclick="document.getElementById('id01').style.display='block'">Login</button>
+    <button id="loginB" class="btn-lg" name="login" onclick="document.getElementById('id03').style.display='block'">Register</button>
   </nav>
   <!-- Four boxes goes here -->
   <main id="main">
@@ -268,11 +269,33 @@
     
 
     <!-- Code for pop up box -->
-    <article>
+    <section>
+
+    <div id="id03" class="myModal">
+
+      <form class="regForm" action="/reg" method="post">
+
+        <h2>Register</h2>
+
+        <div class="logincontainer">
+
+          <label><b>Username</b></label>
+          <input type="text" placeholder="Enter Username" name="uname" required>
+
+          <label><b>Password</b></label>
+          <input type="password" placeholder="Enter Password" name="psw" required>
+              
+          <button class="loginBtn" type="submit">Register</button>
+          <button class="cancelBtn" type="button" onclick="document.getElementById('id03').style.display='none'">Cancel</button>
+        </div>
+    
+      </form>
+
+    </div>
 
       <div id="id01" class="myModal">
 
-      <form class="loginForm">
+      <form class="loginForm" action="/login" method="post">
 
         <h2>Login</h2>
 
@@ -315,7 +338,7 @@
     </div>
 
 
-   </article>
+   </section>
 
 </main>
   <footer>

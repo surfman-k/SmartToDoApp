@@ -51,6 +51,14 @@ app.get("/", (req, res) => {
   res.render("index");
 });
 
+app.post("/reg", (req, res) => {
+	res.redirect("/");
+});
+
+app.post("/login", (req, res) => {
+	res.redirect("/");
+});
+
 app.listen(PORT, () => {
   console.log("Example app listening on port " + PORT);
 });
