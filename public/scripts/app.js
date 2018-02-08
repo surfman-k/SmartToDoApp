@@ -5,9 +5,16 @@
 //   }).done((todoList) => {
 //     for(let obj of todoList) {
 //       console.log(obj);
+//.    }
+//     
+//.    url: "/api/users"
+//   }).done((users) => {
+//     for(let user of users) {
+//       $("<div>").text(user.name).appendTo($("body"));
 //     }
 //   });
 // });
+
 
 $(document).ready(function() {
 
@@ -61,3 +68,19 @@ $(document).ready(function() {
   renderToDo();
 
 });
+
+
+
+
+// $(document).ready(function() {
+
+// if (!localStorage.logged) {
+//     $('#newToDo').css('display', 'none');
+//     $('#logout').css('display', 'none');
+// } else {
+//     $('#loginB').css('display', 'none');
+//     $('#regB').css('display', 'none');
+// }
+
+// });
+

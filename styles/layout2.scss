@@ -15,12 +15,13 @@ nav {
   background-color: #FDA129;
   z-index: 100;
   position: fixed;
+  opacity: 0.9;
 
   button {
     float: right;
     margin-top: 10px;
     z-index: 200;
-  }
+  } 
 
   span {
     font-size: 50px;
@@ -55,6 +56,7 @@ footer {
   z-index: 150;
   position: fixed;
   bottom: 0;
+  opacity: 0.9;
 }
 
 .loginForm h2{
@@ -82,6 +84,10 @@ input[type=text], input[type=password] {
     opacity: 0.9;
 }
 
+.loginBtn:active {
+  transform: translateY(4px);
+}
+
 .submitBtn {
     background-color: #00a087;
     color: white;
@@ -94,6 +100,10 @@ input[type=text], input[type=password] {
     opacity: 0.9;
 }
 
+.submitBtn:active {
+  transform: translateY(4px);
+}
+
 .cancelBtn {
     background-color: #E26C68;
     color: white;
@@ -104,6 +114,10 @@ input[type=text], input[type=password] {
 
 .cancelBtn:hover {
     opacity: 0.9;
+}
+
+.cancelBtn:active {
+  transform: translateY(4px);
 }
 
 .logincontainer {
