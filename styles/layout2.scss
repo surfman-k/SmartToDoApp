@@ -56,7 +56,6 @@ footer {
   bottom: 0;
 }
 
-
 .loginForm h2{
     text-align: center;
 }
@@ -111,14 +110,14 @@ input[type=text], input[type=password] {
 }
 
 .myModal {
-    display: none; 
-    position: fixed; 
+    display: none;
+    position: fixed;
     z-index: 1000;
     left: 25%;
     top: 10%;
-    width: 50%; 
+    width: 50%;
     overflow: auto;
-    background-color: rgba(215,215,215,0.99); 
+    background-color: rgba(215,215,215,0.99);
 }
 
 .myModal-content {
@@ -134,3 +133,4 @@ input[type=text], input[type=password] {
   text-align: center;
   padding: 10px;
 }
+
