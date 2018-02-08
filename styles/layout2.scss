@@ -1,5 +1,7 @@
+
+
+
 body {
-  background-color: #F8E9E9;
   font-family: 'Nanum Pen Script', cursive;
 
   h1 {
@@ -134,3 +136,10 @@ input[type=text], input[type=password] {
   padding: 10px;
 }
 
+html { 
+  background: url(/image/bg.jpg) no-repeat center center fixed; 
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+}
