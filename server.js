@@ -41,7 +41,6 @@ app.use("/styles", sass({
   outputStyle: 'expanded'
 }));
 
-console.log(__dirname + '/styles');
 app.use(express.static("public"));
 
 // Mount all resource routes

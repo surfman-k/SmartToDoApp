@@ -13,7 +13,6 @@ $(document).ready(function() {
 
   function renderToDo(incoming) {
     for (let i = 1; i < 2; i++) {
-      // console.log($(".movies .list-group"));
       $(".movies .list-group").append(createToDoElement());
       $(".books .list-group").append(createToDoElement());
       $(".rest .list-group").append(createToDoElement());
