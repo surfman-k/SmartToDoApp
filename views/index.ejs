@@ -6,6 +6,8 @@
     <meta name="viewport" content="width = device width, initial-scale = 1">
     <title>Home Page</title>
 
+    <link rel="shortcut icon" href="/styles/favicon.ico">
+
     <link rel="stylesheet" href="/vendor/normalize-4.1.1.css" type="text/css" />
     <link rel="stylesheet" href="/vendor/border-box.css" type="text/css" />
 
@@ -30,9 +32,9 @@
   <!--Nav Bar Goes here -->
   <nav class="dropdown-header">
     <span>Project Konjosh</span>
-    <button id="newToDo" class="btn-lg" name="New To Do">Add to do</button>
+    <button id="newToDo" class="btn-lg" name="New To Do" onclick="document.getElementById('id02').style.display='block'" > Add to do </button>
     <!-- Button will lead to Login or registration page. Dissapears when logged in and the name of user instead -->
-    <button id="loginB" class="btn-lg" name="login">Login/Register</button>
+    <button id="loginB" class="btn-lg" name="login" onclick="document.getElementById('id01').style.display='block'">Login/Register</button>
   </nav>
   <!-- Four boxes goes here -->
   <main id="main">
@@ -97,9 +99,56 @@
   </div>
   </article>
 
+    
 
     <!-- Code for pop up box -->
     <article>
+
+      <div id="id01" class="myModal">
+
+      <form class="loginForm">
+
+        <h2>Login</h2>
+
+        <div class="logincontainer">
+
+          <label><b>Username</b></label>
+          <input type="text" placeholder="Enter Username" name="uname" required>
+
+          <label><b>Password</b></label>
+          <input type="password" placeholder="Enter Password" name="psw" required>
+              
+          <button class="loginBtn" type="submit">Login</button>
+
+          <button class="cancelBtn" type="button" onclick="document.getElementById('id01').style.display='none'">Cancel</button>
+
+        </div>
+
+      </form>
+
+    </div>
+
+
+     <div id="id02" class="myModal">
+
+     <form>
+      <h2>Add a New To-Do</h2><br>
+      
+      To-Do:<br>
+      <input type="text" style="width: 30em" name="todo" placeholder="Got a cool book or a café you'd like to try?"><br><br>
+      
+      Complete To-Do By: <br>
+      <input id="datepicker" placeholder="Optional"/>
+      <br><br>
+      
+      <button class="submitBtn" type="submit">Submit</button>
+      <button class="cancelBtn" type="button" onclick="document.getElementById('id02').style.display='none'">Cancel</button>
+      <br><br>
+    </form>
+
+    </div>
+
+
    </article>
 
 </main>
