@@ -1,0 +1,136 @@
+body {
+  background-color: #F8E9E9;
+  font-family: 'Nanum Pen Script', cursive;
+
+  h1 {
+    color: #244751;
+  }
+}
+
+nav {
+  height: 80px;
+  width: 100%;
+  padding: 0px 2em;
+  background-color: #FDA129;
+  z-index: 100;
+  position: fixed;
+
+  button {
+    float: right;
+    margin-top: 10px;
+    z-index: 200;
+  }
+
+  span {
+    font-size: 50px;
+    position: fixed;
+    left: 42%;
+  }
+}
+
+#main {
+  .container-fluid {
+    overflow-y: auto;
+    .col {
+      background-color: #F4F4F4;
+      margin: 20px;
+      padding: 5px;
+      border: 2px solid black;
+      border-radius: 10px;
+      height: 90%;
+      z-index: 99;
+      margin-top: 100px;
+      margin-bottom: 100px;
+    }
+  }
+}
+
+footer {
+  height: 80px;
+  width: 100%;
+  text-align: center;
+  padding: 0px 2em;
+  background-color: #FDA129;
+  z-index: 150;
+  position: fixed;
+  bottom: 0;
+}
+
+
+.loginForm h2{
+    text-align: center;
+}
+
+input[type=text], input[type=password] {
+    width: 100%;
+    padding: 12px 20px;
+    margin: 8px 0;
+    display: inline-block;
+    border: 1px solid #ccc;
+    box-sizing: border-box;
+}
+
+.loginBtn {
+    background-color: #00a087;
+    color: white;
+    padding: 14px 20px;
+    margin: 8px 0;
+    width: 100%;
+}
+
+.loginBtn:hover {
+    opacity: 0.9;
+}
+
+.submitBtn {
+    background-color: #00a087;
+    color: white;
+    padding: 14px 20px;
+    margin: 8px 0;
+    width: 100%;
+}
+
+.submitBtn:hover {
+    opacity: 0.9;
+}
+
+.cancelBtn {
+    background-color: #E26C68;
+    color: white;
+    padding: 14px 20px;
+    margin: 8px 0;
+    width: 100%;
+}
+
+.cancelBtn:hover {
+    opacity: 0.9;
+}
+
+.logincontainer {
+  padding: 16px;
+}
+
+.myModal {
+    display: none; 
+    position: fixed; 
+    z-index: 1000;
+    left: 25%;
+    top: 10%;
+    width: 50%; 
+    overflow: auto;
+    background-color: rgba(215,215,215,0.99); 
+}
+
+.myModal-content {
+    background-color: #fefefe;
+    margin: 5% auto 15% auto; /* 5% from the top, 15% from the bottom and centered */
+    border: 1px solid #888;
+    width: 80%; /* Could be more or less, depending on screen size */
+}
+
+.myModal {
+  border: solid 1px black;
+  border-radius: 10px;
+  text-align: center;
+  padding: 10px;
+}

@@ -1,17 +1,159 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width = device width, initial-scale = 1">
     <title>Home Page</title>
+
+    <link rel="shortcut icon" href="/styles/favicon.ico">
 
     <link rel="stylesheet" href="/vendor/normalize-4.1.1.css" type="text/css" />
     <link rel="stylesheet" href="/vendor/border-box.css" type="text/css" />
+
+    <link rel="stylesheet" href="/css/bootstrap.min.css">
+
     <link rel="stylesheet" href="/styles/layout.css" type="text/css" />
+    <link rel="stylesheet" href="/styles/layout2.css" type="text/css" />
+     <link href="https://fonts.googleapis.com/css?family=Nanum+Pen+Script" rel="stylesheet">
+
 
     <script type="text/javascript" src="/vendor/jquery-3.0.0.js"></script>
+    <!--
     <script type="text/javascript" src="/scripts/app.js"></script>
+    -->
+    <script src="/js/jquery.min.js"></script>
+
+    <script src="/js/bootstrap.min.js"></script>
+
   </head>
 
-  <body>
-    <h1>Hello World!</h1>
-  </body>
+<body>
+  <!--Nav Bar Goes here -->
+  <nav class="dropdown-header">
+    <span>Project Konjosh</span>
+    <button id="newToDo" class="btn-lg" name="New To Do" onclick="document.getElementById('id02').style.display='block'" > Add to do </button>
+    <!-- Button will lead to Login or registration page. Dissapears when logged in and the name of user instead -->
+    <button id="loginB" class="btn-lg" name="login" onclick="document.getElementById('id01').style.display='block'">Login/Register</button>
+  </nav>
+  <!-- Four boxes goes here -->
+  <main id="main">
+  <article class="container-fluid">
+    <div class="row align-items-start">
+    <div class="col">
+      <h3>Movies / Tv Shows</h3>
+      <p>Lorem ipsum dolor amet pok pok shaman church-key, green juice single-origin coffee raclette authentic lyft venmo raw denim. Meditation heirloom umami taiyaki, pok pok aesthetic austin. Helvetica chambray skateboard edison bulb. Normcore lyft schlitz meggings, twee tofu green juice. Tumblr meditation try-hard lomo, poutine tumeric portland pitchfork pop-up keytar humblebrag. Coloring book aesthetic YOLO chillwave.
+
+      Selfies small batch glossier man bun tacos banjo meh pickled affogato whatever plaid semiotics keffiyeh everyday carry. Microdosing seitan pitchfork VHS. Leggings hot chicken hell of shoreditch quinoa chambray gentrify deep v selvage dreamcatcher hammock prism. Meditation letterpress literally air plant. Adaptogen subway tile pabst tote bag street art vape master cleanse hella chambray portland kinfolk coloring book glossier. Skateboard viral 3 wolf moon, synth poutine kickstarter trust fund craft beer intelligentsia XOXO tofu.
+
+      Tumeric distillery pug wayfarers sriracha unicorn 90's neutra bespoke. Shoreditch air plant hammock, fingerstache disrupt kale chips ugh scenester readymade shaman. Yr vape whatever vexillologist hammock fanny pack williamsburg pork belly distillery pop-up kitsch tousled echo park vegan synth. Typewriter kogi swag tacos snackwave lyft. Meditation XOXO williamsburg irony raw denim meh hexagon food truck disrupt fixie organic mixtape.
+
+      Hella photo booth gochujang brooklyn, squid bicycle rights health goth scenester. Fanny pack bushwick jean shorts copper mug biodiesel chambray helvetica sartorial man bun tumeric authentic etsy. Viral iceland typewriter, fingerstache venmo kogi taxidermy migas gochujang activated charcoal blog biodiesel direct trade copper mug. Cloud bread flannel craft beer chia hell of, truffaut hella lo-fi pug cred art party vegan cliche.
+
+      Chambray tofu pop-up next level readymade kitsch lumbersexual sartorial ramps. Snackwave man bun XOXO green juice letterpress meh master cleanse cronut hammock occupy PBR&B jianbing readymade disrupt. Raw denim irony echo park street art hexagon health goth intelligentsia. Distillery venmo +1, pop-up humblebrag quinoa hashtag occupy pork belly messenger bag food truck. Stumptown meh aesthetic, iPhone distillery mixtape green juice hammock narwhal sriracha.
+
+      Oh. You need a little dummy text for your mockup? How quaint.</p>
+    </div>
+    <div class="col">
+      <h3>Books</h3>
+      <p>Lorem ipsum dolor amet pok pok shaman church-key, green juice single-origin coffee raclette authentic lyft venmo raw denim. Meditation heirloom umami taiyaki, pok pok aesthetic austin. Helvetica chambray skateboard edison bulb. Normcore lyft schlitz meggings, twee tofu green juice. Tumblr meditation try-hard lomo, poutine tumeric portland pitchfork pop-up keytar humblebrag. Coloring book aesthetic YOLO chillwave.
+
+      Selfies small batch glossier man bun tacos banjo meh pickled affogato whatever plaid semiotics keffiyeh everyday carry. Microdosing seitan pitchfork VHS. Leggings hot chicken hell of shoreditch quinoa chambray gentrify deep v selvage dreamcatcher hammock prism. Meditation letterpress literally air plant. Adaptogen subway tile pabst tote bag street art vape master cleanse hella chambray portland kinfolk coloring book glossier. Skateboard viral 3 wolf moon, synth poutine kickstarter trust fund craft beer intelligentsia XOXO tofu.
+
+      Tumeric distillery pug wayfarers sriracha unicorn 90's neutra bespoke. Shoreditch air plant hammock, fingerstache disrupt kale chips ugh scenester readymade shaman. Yr vape whatever vexillologist hammock fanny pack williamsburg pork belly distillery pop-up kitsch tousled echo park vegan synth. Typewriter kogi swag tacos snackwave lyft. Meditation XOXO williamsburg irony raw denim meh hexagon food truck disrupt fixie organic mixtape.
+
+      Hella photo booth gochujang brooklyn, squid bicycle rights health goth scenester. Fanny pack bushwick jean shorts copper mug biodiesel chambray helvetica sartorial man bun tumeric authentic etsy. Viral iceland typewriter, fingerstache venmo kogi taxidermy migas gochujang activated charcoal blog biodiesel direct trade copper mug. Cloud bread flannel craft beer chia hell of, truffaut hella lo-fi pug cred art party vegan cliche.
+
+      Chambray tofu pop-up next level readymade kitsch lumbersexual sartorial ramps. Snackwave man bun XOXO green juice letterpress meh master cleanse cronut hammock occupy PBR&B jianbing readymade disrupt. Raw denim irony echo park street art hexagon health goth intelligentsia. Distillery venmo +1, pop-up humblebrag quinoa hashtag occupy pork belly messenger bag food truck. Stumptown meh aesthetic, iPhone distillery mixtape green juice hammock narwhal sriracha.
+
+      Oh. You need a little dummy text for your mockup? How quaint.</p>
+    </div>
+    <div class="col">
+      <h3>Restaurants</h3>
+      <p>Lorem ipsum dolor amet pok pok shaman church-key, green juice single-origin coffee raclette authentic lyft venmo raw denim. Meditation heirloom umami taiyaki, pok pok aesthetic austin. Helvetica chambray skateboard edison bulb. Normcore lyft schlitz meggings, twee tofu green juice. Tumblr meditation try-hard lomo, poutine tumeric portland pitchfork pop-up keytar humblebrag. Coloring book aesthetic YOLO chillwave.
+
+      Selfies small batch glossier man bun tacos banjo meh pickled affogato whatever plaid semiotics keffiyeh everyday carry. Microdosing seitan pitchfork VHS. Leggings hot chicken hell of shoreditch quinoa chambray gentrify deep v selvage dreamcatcher hammock prism. Meditation letterpress literally air plant. Adaptogen subway tile pabst tote bag street art vape master cleanse hella chambray portland kinfolk coloring book glossier. Skateboard viral 3 wolf moon, synth poutine kickstarter trust fund craft beer intelligentsia XOXO tofu.
+
+      Tumeric distillery pug wayfarers sriracha unicorn 90's neutra bespoke. Shoreditch air plant hammock, fingerstache disrupt kale chips ugh scenester readymade shaman. Yr vape whatever vexillologist hammock fanny pack williamsburg pork belly distillery pop-up kitsch tousled echo park vegan synth. Typewriter kogi swag tacos snackwave lyft. Meditation XOXO williamsburg irony raw denim meh hexagon food truck disrupt fixie organic mixtape.
+
+      Hella photo booth gochujang brooklyn, squid bicycle rights health goth scenester. Fanny pack bushwick jean shorts copper mug biodiesel chambray helvetica sartorial man bun tumeric authentic etsy. Viral iceland typewriter, fingerstache venmo kogi taxidermy migas gochujang activated charcoal blog biodiesel direct trade copper mug. Cloud bread flannel craft beer chia hell of, truffaut hella lo-fi pug cred art party vegan cliche.
+
+      Chambray tofu pop-up next level readymade kitsch lumbersexual sartorial ramps. Snackwave man bun XOXO green juice letterpress meh master cleanse cronut hammock occupy PBR&B jianbing readymade disrupt. Raw denim irony echo park street art hexagon health goth intelligentsia. Distillery venmo +1, pop-up humblebrag quinoa hashtag occupy pork belly messenger bag food truck. Stumptown meh aesthetic, iPhone distillery mixtape green juice hammock narwhal sriracha.
+
+      Oh. You need a little dummy text for your mockup? How quaint.</p>
+    </div>
+    <div class="col">
+      <h3>Products</h3>
+      <p>Lorem ipsum dolor amet pok pok shaman church-key, green juice single-origin coffee raclette authentic lyft venmo raw denim. Meditation heirloom umami taiyaki, pok pok aesthetic austin. Helvetica chambray skateboard edison bulb. Normcore lyft schlitz meggings, twee tofu green juice. Tumblr meditation try-hard lomo, poutine tumeric portland pitchfork pop-up keytar humblebrag. Coloring book aesthetic YOLO chillwave.
+
+      Selfies small batch glossier man bun tacos banjo meh pickled affogato whatever plaid semiotics keffiyeh everyday carry. Microdosing seitan pitchfork VHS. Leggings hot chicken hell of shoreditch quinoa chambray gentrify deep v selvage dreamcatcher hammock prism. Meditation letterpress literally air plant. Adaptogen subway tile pabst tote bag street art vape master cleanse hella chambray portland kinfolk coloring book glossier. Skateboard viral 3 wolf moon, synth poutine kickstarter trust fund craft beer intelligentsia XOXO tofu.
+
+      Tumeric distillery pug wayfarers sriracha unicorn 90's neutra bespoke. Shoreditch air plant hammock, fingerstache disrupt kale chips ugh scenester readymade shaman. Yr vape whatever vexillologist hammock fanny pack williamsburg pork belly distillery pop-up kitsch tousled echo park vegan synth. Typewriter kogi swag tacos snackwave lyft. Meditation XOXO williamsburg irony raw denim meh hexagon food truck disrupt fixie organic mixtape.
+
+      Hella photo booth gochujang brooklyn, squid bicycle rights health goth scenester. Fanny pack bushwick jean shorts copper mug biodiesel chambray helvetica sartorial man bun tumeric authentic etsy. Viral iceland typewriter, fingerstache venmo kogi taxidermy migas gochujang activated charcoal blog biodiesel direct trade copper mug. Cloud bread flannel craft beer chia hell of, truffaut hella lo-fi pug cred art party vegan cliche.
+
+      Chambray tofu pop-up next level readymade kitsch lumbersexual sartorial ramps. Snackwave man bun XOXO green juice letterpress meh master cleanse cronut hammock occupy PBR&B jianbing readymade disrupt. Raw denim irony echo park street art hexagon health goth intelligentsia. Distillery venmo +1, pop-up humblebrag quinoa hashtag occupy pork belly messenger bag food truck. Stumptown meh aesthetic, iPhone distillery mixtape green juice hammock narwhal sriracha.
+
+      Oh. You need a little dummy text for your mockup? How quaint.</p>
+    </div>
+  </div>
+  </article>
+
+    
+
+    <!-- Code for pop up box -->
+    <article>
+
+      <div id="id01" class="myModal">
+
+      <form class="loginForm">
+
+        <h2>Login</h2>
+
+        <div class="logincontainer">
+
+          <label><b>Username</b></label>
+          <input type="text" placeholder="Enter Username" name="uname" required>
+
+          <label><b>Password</b></label>
+          <input type="password" placeholder="Enter Password" name="psw" required>
+              
+          <button class="loginBtn" type="submit">Login</button>
+
+          <button class="cancelBtn" type="button" onclick="document.getElementById('id01').style.display='none'">Cancel</button>
+
+        </div>
+
+      </form>
+
+    </div>
+
+
+     <div id="id02" class="myModal">
+
+     <form>
+      <h2>Add a New To-Do</h2><br>
+      
+      To-Do:<br>
+      <input type="text" style="width: 30em" name="todo" placeholder="Got a cool book or a café you'd like to try?"><br><br>
+      
+      Complete To-Do By: <br>
+      <input id="datepicker" placeholder="Optional"/>
+      <br><br>
+      
+      <button class="submitBtn" type="submit">Submit</button>
+      <button class="cancelBtn" type="button" onclick="document.getElementById('id02').style.display='none'">Cancel</button>
+      <br><br>
+    </form>
+
+    </div>
+
+
+   </article>
+
+</main>
+  <footer>
+    funny quote here
+  </footer>
+</body>
 </html>

@@ -22,6 +22,12 @@ const usersRoutes = require("./routes/users");
 //         The :status token will be colored red for server error codes, yellow for client error codes, cyan for redirection codes, and uncolored for all other codes.
 app.use(morgan('dev'));
 
+
+// Bootstrap
+app.use('/js', express.static(__dirname + '/node_modules/bootstrap/dist/js')); // redirect bootstrap JS
+app.use('/js', express.static(__dirname + '/node_modules/jquery/dist')); // redirect JS jQuery
+app.use('/css', express.static(__dirname + '/node_modules/bootstrap/dist/css')); // redirect CSS bootstrap
+
 // Log knex SQL queries to STDOUT as well
 app.use(knexLogger(knex));
 
@@ -33,6 +39,8 @@ app.use("/styles", sass({
   debug: true,
   outputStyle: 'expanded'
 }));
+
+console.log(__dirname + '/styles');
 app.use(express.static("public"));
 
 // Mount all resource routes
