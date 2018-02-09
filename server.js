@@ -56,15 +56,23 @@ app.get("/", (req, res) => {
 
 app.post("/reg", (req, res) => {
 	let textpass = req.body.psw;
+	let username = req.body.uname;
 	let hashed = bcrypt.hashSync(textpass, 10);
-	console.log(hashed);
-	console.log(req.body.uname);
-	console.log(req.body.psw);
+
+	let insert1 = {name: username, password: hashed};
+
+	knex.insert(insert1).into("users").then(function (id) {
+	  console.log(id);
+	})
+	.finally(function() {
+	  knex.destroy();
+	});
+
 	res.redirect("/");
 });
 
 app.post("/login", (req, res) => {
-	console.log(req.body);
+	//if(bcrypt.compareSync(req.body.psw, hashed-to-get-from-db))
 	res.redirect("/");
 });
 
