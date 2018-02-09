@@ -21,7 +21,7 @@ nav {
     float: right;
     margin-top: 10px;
     z-index: 200;
-  } 
+  }
 
   span {
     font-size: 50px;
@@ -104,19 +104,11 @@ input[type=text], input[type=password] {
   transform: translateY(4px);
 }
 
-.cancelBtn {
-    background-color: #E26C68;
-    color: white;
-    padding: 14px 20px;
-    margin: 8px 0;
-    width: 100%;
-}
-
-.cancelBtn:hover {
+.cancelB:hover {
     opacity: 0.9;
 }
 
-.cancelBtn:active {
+.cancelB:active {
   transform: translateY(4px);
 }
 
@@ -125,35 +117,64 @@ input[type=text], input[type=password] {
 }
 
 .myModal {
-    display: none;
-    position: fixed;
-    z-index: 1000;
-    left: 25%;
-    top: 10%;
-    width: 50%;
-    overflow: auto;
-    background-color: rgba(215,215,215,0.99);
-}
-
-.myModal-content {
-    background-color: #fefefe;
-    margin: 5% auto 15% auto; /* 5% from the top, 15% from the bottom and centered */
-    border: 1px solid #888;
-    width: 80%; /* Could be more or less, depending on screen size */
-}
-
-.myModal {
+  display: none;
+  position: fixed;
+  z-index: 10000;
+  left: 75%;
+  top: 10%;
+  width: 25%;
+  background-color: rgba(215, 215, 215, 0.99);
   border: solid 1px black;
   border-radius: 10px;
   text-align: center;
   padding: 10px;
+
 }
 
+// .myModal-content {
+//   background-color: #fefefe;
+//   margin: 5% auto 15% auto; 5% from the top, 15% from the bottom and centered
+//   border: 1px solid #888;
+//   width: 100%; /* Could be more or less, depending on screen size */
+// }
 
-html { 
-  background: url(/image/bg2.png) no-repeat center center fixed; 
+html {
+  background: url(/image/bg2.png) no-repeat center center fixed;
   -webkit-background-size: cover;
   -moz-background-size: cover;
   -o-background-size: cover;
   background-size: cover;
 }
+
+.btn-label {
+  position: relative;
+  left: -12px;
+  display: inline-block;
+  padding: 6px 12px;
+  background: rgba(0,0,0,0.15);
+  border-radius: 3px 0 0 3px;
+}
+.btn-labeled {
+  padding-top: 0;
+  padding-bottom: 0;
+}
+.input-group {
+  margin-bottom:10px;
+}
+.separator {
+  border-right: 1px solid #dfdfe0;
+}
+
+.input-group-addon
+{
+    background-color: rgb(50, 118, 177);
+    border-color: rgb(40, 94, 142);
+    color: rgb(255, 255, 255);
+}
+.form-control:focus
+{
+    background-color: rgb(50, 118, 177);
+    border-color: rgb(40, 94, 142);
+    color: rgb(255, 255, 255);
+}
+.form-signup input[type="text"],.form-signup input[type="password"] { border: 1px solid rgb(50, 118, 177); }

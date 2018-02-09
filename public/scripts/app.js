@@ -69,24 +69,38 @@ $(document).ready(function() {
   $newToDo.on("click", function(event) {
     event.preventDefault();
 
-  })
+  });
+
+  if (!localStorage.logged) {
+    $('#newToDo').css('display', 'none');
+    $('#logout').css('display', 'none');
+  } else {
+    $('#loginB').css('display', 'none');
+    $('#regB').css('display', 'none');
+  }
+
+  $(".registerLink").on("click", function(event) {
+    event.preventDefault();
+    $("#id01").css('display', 'none');
+    $("#id03").css('display', 'block');
+  });
+
+  let $passwordReg = $("#passwordReg");
+  let $confirmPass = $("#oasswordConfirm")
+
+  //Registration validator
+
+  if ($passwordReg !== $confirmPass) {
+    alert("Nope");
+  } else {
+    alert("Woo. A match!");
+  }
+
+
 
   renderToDo();
 
 });
 
 
-
-
-// $(document).ready(function() {
-
-// if (!localStorage.logged) {
-//     $('#newToDo').css('display', 'none');
-//     $('#logout').css('display', 'none');
-// } else {
-//     $('#loginB').css('display', 'none');
-//     $('#regB').css('display', 'none');
-// }
-
-// });
 
