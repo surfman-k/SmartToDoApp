@@ -6,7 +6,12 @@ $(document).ready(function() {
     let $formElement = $("<form>");
 
     let $header = $("<h2>").text("What are you going to do next?");
+    let $divElem = $("<div>")
+
     let $header2 = $("<h4>").text("To do:");
+    let input
+
+
   }
 
 
