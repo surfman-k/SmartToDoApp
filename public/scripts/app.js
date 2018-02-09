@@ -71,6 +71,9 @@ $(document).ready(function() {
 
   });
 
+  $("#datepicker").datepicker();
+
+
   // if (!localStorage.logged) {
   //   $('#newToDo').css('display', 'none');
   //   $('#logout').css('display', 'none');
