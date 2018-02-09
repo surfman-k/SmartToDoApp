@@ -72,6 +72,12 @@ app.post("/reg", (req, res) => {
 		knex.destroy();
 	});
 
+	let payload = {user : req.body.uname};
+	jwt.sign(payload, process.env.secretKEY, function(err, token) {
+  		console.log(token);
+  		res.status(201).send(token);
+	});
+
 	res.redirect("/");
 });
 
