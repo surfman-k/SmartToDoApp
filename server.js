@@ -61,9 +61,7 @@ app.post("/reg", (req, res) => {
 
 	let insert1 = {name: username, password: hashed};
 
-	knex.insert(insert1).into("users").then(function (id) {
-	  console.log(id);
-	})
+	knex.insert(insert1).into("users").then(function (id) {})
 	.finally(function() {
 	  knex.destroy();
 	});
