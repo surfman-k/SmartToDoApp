@@ -54,10 +54,12 @@ app.get("/", (req, res) => {
 });
 
 app.post("/reg", (req, res) => {
+	console.log(req.body);
 	res.redirect("/");
 });
 
 app.post("/login", (req, res) => {
+	console.log(req.body);
 	res.redirect("/");
 });
 
