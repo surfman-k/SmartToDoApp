@@ -5,148 +5,207 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width = device width, initial-scale = 1">
-    <title>Home Page</title>
+    <title>Smart To Do</title>
 
+    <!-- browser icon -->
     <link rel="shortcut icon" href="/styles/favicon.ico">
 
+    <!-- Styles -->
     <link rel="stylesheet" href="/vendor/normalize-4.1.1.css" type="text/css" />
     <link rel="stylesheet" href="/vendor/border-box.css" type="text/css" />
-
     <link rel="stylesheet" href="/css/bootstrap.min.css">
-
     <link rel="stylesheet" href="/styles/layout.css" type="text/css" />
     <link rel="stylesheet" href="/styles/layout2.css" type="text/css" />
-     <link href="https://fonts.googleapis.com/css?family=Nanum+Pen+Script" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Nanum+Pen+Script" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="/styles/jquery.flash.css" />
+    <link type="stylesheet" src="/vendor/jquery-ui-1.12.1/jquery-ui.css"></script>
 
-
+    <!-- scripts -->
     <script type="text/javascript" src="/vendor/jquery-3.0.0.js"></script>
-
     <script type="text/javascript" src="/scripts/app.js"></script>
-
+    <script type="text/javascript" src="/scripts/moment.min.js"></script>
     <script src="/js/jquery.min.js"></script>
-
     <script src="/js/bootstrap.min.js"></script>
-
+    <script type="text/javascript" src="/scripts/jquery.flash.js"></script>
+    <script type="text/javascript" src="/vendor/jquery-ui-1.12.1/jquery-ui.js"></script>
   </head>
 
-<body>
-  <!--Nav Bar Goes here -->
-  <nav class="dropdown-header">
-    <span>Project Konjosh</span>
-    <button id="logout" class="btn-lg" name="logout"> Logout </button>
-    <button id="newToDo" class="btn-lg" name="New To Do" onclick="document.getElementById('id02').style.display='block'" > Add to do </button>
-    <!-- Button will lead to Login or registration page. Dissapears when logged in and the name of user instead -->
-    <button id="loginB" class="btn-lg" name="login" onclick="document.getElementById('id01').style.display='block'">Login</button>
-    <button id="regB" class="btn-lg" name="reg" onclick="document.getElementById('id03').style.display='block'">Register</button>
-  </nav>
-  <!-- To do columns start -->
-  <main id="main">
-  <section class="container-fluid">
-    <div class="row align-items-start">
-      <div class="col movies">
-        <h3>Movies / Tv Shows</h3>
-      <div class="list-group">
-        <!--jQuery movies here-->
-      </div>
-    </div>
-    <div class="col books">
-      <h3>Books</h3>
-      <div class="list-group">
-        <!--jQuery books here-->
-      </div>
-    </div>
-    <div class="col rest">
-      <h3>Restaurants</h3>
-          <div class="list-group">
-        <!--jQuery restaurants here-->
+  <body>
+    <!--Nav Bar Goes here -->
+    <nav class="dropdown-header">
+      <span>Project Konjosh</span>
+      <button id="logout" class="btn-lg" name="logout"> Logout </button>
+      <button id="newToDo" class="btn-lg" name="New To Do" onclick="document.getElementById('id02').style.display='block'" > Add to do </button>
+      <!-- Button will lead to Login or registration page. Dissapears when logged in and the name of user instead -->
+      <button id="loginB" class="btn-lg" name="login" onclick="document.getElementById('id01').style.display='block'">Login</button>
+      <button id="regB" class="btn-lg" name="reg" onclick="document.getElementById('id03').style.display='block'">Register</button>
+    </nav>
+
+  <div id="id01" class="myModal">
+    <form class="loginForm" action="/login" method="post">
+      <div class="row">
+          <div class="col-md-12">
+              <div class="panel panel-default">
+                  <div class="panel-heading">
+                      <span class="glyphicon glyphicon-lock"></span> Login</div>
+                  <div class="panel-body">
+                      <form class="form-horizontal" role="form">
+                      <div class="form-group">
+                          <label for="inputEmail3" class="col-sm-3 control-label">
+                              Email</label>
+                          <div class="col-sm-12">
+                              <input type="email" class="form-control" id="inputEmail3" placeholder="Email" required>
+                          </div>
+                      </div>
+                      <div class="form-group">
+                          <label for="inputPassword3" class="col-sm-3 control-label">
+                              Password</label>
+                          <div class="col-sm-12">
+                              <input type="password" class="form-control" id="inputPassword3" placeholder="Password" required>
+                          </div>
+                      </div>
+                      <div class="form-group">
+                          <div class="col-sm-offset-3 col-sm-12">
+                              <div class="checkbox">
+                                  <label>
+                                      <input type="checkbox"/>
+                                      Remember me
+                                  </label>
+                              </div>
+                          </div>
+                      </div>
+                      <div class="form-group last">
+                          <div class="col-sm-offset-3 col-sm-12">
+                              <button type="submit" class="btn btn-success btn-sm">
+                                  Sign in</button>
+                                   <button type="reset" class="btn btn-default btn-sm" onclick="document.getElementById('id01').style.display='none'">
+                                  Cancel</button>
+
+                          </div>
+                      </div>
+                      </form>
+                  </div>
+                  <div class="panel-footer">
+                      Not Registred?
+                      <a href="" class="registerLink">Register here</a></div>
+              </div>
+          </div>
        </div>
+     </div>
+  </form>
+</div>
+
+<div id="id03" class="myModal">
+        <form class="regForm" action="/reg" method="post">
+    <div class="row">
+        <div class="col-md-12">
+            <div class="panel panel-default">
+                <div class="panel-body">
+                    <h5 class="text-center">
+                        SIGN UP</h5>
+                    <form class="form form-signup" role="form">
+                    <div class="form-group">
+                        <div class="input-group">
+                            <span class="input-group-addon"><span class="glyphicon glyphicon-user"></span></span>
+                            <input type="text" class="form-control" placeholder="Username" />
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="input-group">
+                            <span class="input-group-addon"><span class="glyphicon glyphicon-lock"></span></span>
+                            <input id="passwordReg" type="password" class="form-control" placeholder="Password" />
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="input-group">
+                            <span class="input-group-addon"><span class="glyphicon glyphicon-lock"></span></span>
+                            <input id="passwordConfirm" type="password" class="form-control" placeholder="Confirm Password" />
+                        </div>
+                    </div>
+                </div>
+                <button id="registerButton" type="submit" class="btn btn-success btn-sm">Register</button>
+                <button type="reset" class="btn btn-default btn-sm" onclick="document.getElementById('id03').style.display='none'">Cancel</button>
+              </form>
+            </div>
+        </div>
     </div>
-    <div class="col product">
-      <h3>Products</h3>
-      <div class="list-group">
-        <!--jQuery products here-->
+</div>
+</form>
+</div>
+
+    <!-- To do columns start -->
+    <main id="main">
+    <section class="container-fluid">
+      <div class="row align-items-start">
+        <div class="col movies">
+          <h3>Movies / Tv Shows</h3>
+        <div class="list-group">
+          <!--jQuery movies here-->
+        </div>
+      </div>
+      <div class="col books">
+        <h3>Books</h3>
+        <div class="list-group">
+          <!--jQuery books here-->
+        </div>
+      </div>
+      <div class="col rest">
+        <h3>Restaurants</h3>
+            <div class="list-group">
+          <!--jQuery restaurants here-->
+         </div>
+      </div>
+      <div class="col product">
+        <h3>Products</h3>
+        <div class="list-group">
+          <!--jQuery products here-->
+        </div>
       </div>
     </div>
-  </div>
-<!-- To do columns end -->
-  </section>
+    <!-- To do columns end -->
+    </section>
 
 
-    <!-- Code for pop up box -->
-    <section>
+      <!-- Code for pop up box -->
+      <section>
+<!--
+      <div id="id03" class="myModal">
+        <form class="regForm" action="/reg" method="post">
+          <h2>Register</h2>
+          <div class="logincontainer">
+            <label><b>Username</b></label>
+            <input type="text" placeholder="Enter Username" name="uname" required>
+            <label><b>Password</b></label>
+            <input type="password" placeholder="Enter Password" name="psw" required>
+            <button class="loginBtn" type="submit">Register</button>
+            <button class="cancelBtn" type="button" onclick="document.getElementById('id03').style.display='none'">Cancel</button>
+          </div>
+        </form>
+      </div>
+-->
 
-    <div id="id03" class="myModal">
+      <div id="id02" class="myModal">
+        <form>
+          <h2>Add a New To-Do</h2><br>
+          <div>
+            <h4>To-Do:</h4>
+            <input type="text" style="width: 30em" name="todo" placeholder="Got a cool book or a café you'd like to try?">
+          </div>
+          <div>
+            <h4>Complete To-Do By:</h4>
+              <p>Date: <input type="text" id="datepicker"></p>
+          </div>
+          <div>
+            <button class="submitBtn" type="submit">Submit</button>
+            <button class="cancelBtn" type="button" onclick="document.getElementById('id02').style.display='none'">Cancel</button>
+          </div>
+        </form>
+      </div>
+    </section>
 
-      <form class="regForm" action="/reg" method="post">
-
-        <h2>Register</h2>
-
-        <div class="logincontainer">
-
-          <label><b>Username</b></label>
-          <input type="text" placeholder="Enter Username" name="uname" required>
-
-          <label><b>Password</b></label>
-          <input type="password" placeholder="Enter Password" name="psw" required>
-              
-          <button class="loginBtn" type="submit">Register</button>
-          <button class="cancelBtn" type="button" onclick="document.getElementById('id03').style.display='none'">Cancel</button>
-        </div>
-    
-      </form>
-
-    </div>
-
-      <div id="id01" class="myModal">
-
-      <form class="loginForm" action="/login" method="post">
-
-        <h2>Login</h2>
-
-        <div class="logincontainer">
-
-          <label><b>Username</b></label>
-          <input type="text" placeholder="Enter Username" name="uname" required>
-
-          <label><b>Password</b></label>
-          <input type="password" placeholder="Enter Password" name="psw" required>
-
-          <button class="loginBtn" type="submit">Login</button>
-
-          <button class="cancelBtn" type="button" onclick="document.getElementById('id01').style.display='none'">Cancel</button>
-
-        </div>
-
-      </form>
-
-    </div>
-
-
-     <div id="id02" class="myModal">
-
-     <form>
-      <h2>Add a New To-Do</h2><br>
-
-      To-Do:<br>
-      <input type="text" style="width: 30em" name="todo" placeholder="Got a cool book or a café you'd like to try?"><br><br>
-
-      Complete To-Do By: <br>
-      <input id="datepicker" placeholder="Optional"/>
-      <br><br>
-
-      <button class="submitBtn" type="submit">Submit</button>
-      <button class="cancelBtn" type="button" onclick="document.getElementById('id02').style.display='none'">Cancel</button>
-      <br><br>
-    </form>
-
-    </div>
-
-
-   </section>
-
-</main>
-  <footer>
-    funny quote here
-  </footer>
-</body>
+    </main>
+    <footer>
+      funny quote here
+    </footer>
+  </body>
 </html>

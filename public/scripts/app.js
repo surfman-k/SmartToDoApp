@@ -6,7 +6,7 @@
 //     for(let obj of todoList) {
 //       console.log(obj);
 //.    }
-//     
+//
 //.    url: "/api/users"
 //   }).done((users) => {
 //     for(let user of users) {
@@ -65,26 +65,70 @@ $(document).ready(function() {
     return $toDoMain;
   }
 
-  renderToDo();
+  let $newToDo = $("#loginB");
+  $newToDo.on("click", function(event) {
+    event.preventDefault();
 
-});
+  });
+
+  $("#datepicker").datepicker();
 
 
-
+  // if (!localStorage.logged) {
+  //   $('#newToDo').css('display', 'none');
+  //   $('#logout').css('display', 'none');
+  // } else {
+  //   $('#loginB').css('display', 'none');
+  //   $('#regB').css('display', 'none');
+  // }
 
 $(document).ready(function() {
 
 
 
 if (!localStorage.logged) {
-    $('html').css("background-image", "url(/image/bg3.png)"); 
+    $('html').css("background-image", "url(/image/bg3.png)");
     $('#newToDo').css('display', 'none');
     $('#logout').css('display', 'none');
 } else {
-    $('html').css("background-image", "url(/image/bg2.png)"); 
+    $('html').css("background-image", "url(/image/bg2.png)");
     $('#loginB').css('display', 'none');
     $('#regB').css('display', 'none');
 }
+
+});
+
+  $(".registerLink").on("click", function(event) {
+    event.preventDefault();
+    $("#id01").css('display', 'none');
+    $("#id03").css('display', 'block');
+  });
+
+  $("#regB").on("click", function(event) {
+    event.preventDefault();
+    $("id03").modal('hide');
+  });
+
+  //Registration validator
+
+  $("#registerButton").on("click", function(event) {
+    event.preventDefault();
+      let $passwordReg = $("#passwordReg").val();
+      let $confirmPass = $("#passwordConfirm").val();
+
+      if (($passwordReg.length || $confirmPass.length) === 0) {
+        $.flash("nothing entered")
+      } else if ($passwordReg !== $confirmPass) {
+        $.flash("Passwords do not match :(")
+      } else {
+        alert("Woo. A match!");
+      }
+
+  });
+
+  // Login Validator
+
+  renderToDo();
 
 });
 
