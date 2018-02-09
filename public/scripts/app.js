@@ -6,7 +6,7 @@
 //     for(let obj of todoList) {
 //       console.log(obj);
 //.    }
-//     
+//
 //.    url: "/api/users"
 //   }).done((users) => {
 //     for(let user of users) {
@@ -64,6 +64,12 @@ $(document).ready(function() {
 
     return $toDoMain;
   }
+
+  let $newToDo = $("#loginB");
+  $newToDo.on("click", function(event) {
+    event.preventDefault();
+
+  })
 
   renderToDo();
 
