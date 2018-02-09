@@ -14,6 +14,7 @@ const knex        = require("knex")(knexConfig[ENV]);
 const morgan      = require('morgan');
 const knexLogger  = require('knex-logger');
 const bcrypt 	  = require('bcrypt');
+const jwt		  = require('jsonwebtoken');
 
 // Seperated Routes for each Resource
 const usersRoutes = require("./routes/users");
@@ -49,11 +50,13 @@ app.use(express.static("public"));
 app.use("/api/users", usersRoutes(knex));
 app.use("/api/todoList", todoListRoutes(knex));
 app.use("/api/category", categoryRoutes(knex));
+
 // Home page
 app.get("/", (req, res) => {
   res.render("index");
 });
 
+//Registration functionality
 app.post("/reg", (req, res) => {
 	let textpass = req.body.psw;
 	let username = req.body.uname;
@@ -72,20 +75,28 @@ app.post("/reg", (req, res) => {
 	res.redirect("/");
 });
 
+//Login functionality
 app.post("/login", (req, res) => {
+
 	knex('users').where({name: req.body.uname}).select('password').then(function(id) {
 		return id[0].password;
 	})
 	.then(function(pass){
 		if(bcrypt.compareSync(req.body.psw, pass)){
-			console.log('true');
+			let payload = {user : req.body.uname};
+			console.log(payload);
+			jwt.sign(payload, process.env.secretKEY, function(err, token) {
+  				console.log(token);
+  				res.status(201).send(token);
+			});
 		} else {
-			console.log('nope');
+			console.log('password wrong!');
 		}
 	})
 	.catch(function(error) {
   		console.error(error.detail);
 	});
+
 	res.redirect("/");
 });
 
