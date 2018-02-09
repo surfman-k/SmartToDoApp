@@ -72,7 +72,16 @@ app.post("/reg", (req, res) => {
 });
 
 app.post("/login", (req, res) => {
-	//if(bcrypt.compareSync(req.body.psw, hashed-to-get-from-db))
+	knex('users').where({name: req.body.uname}).select('password').then(function(id) {
+		return id[0].password;
+	})
+	.then(function(pass){
+		if(bcrypt.compareSync(req.body.psw, pass)){
+			console.log('true');
+		} else {
+			console.log('nope');
+		}
+	});
 	res.redirect("/");
 });
 
