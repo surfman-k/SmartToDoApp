@@ -71,13 +71,13 @@ $(document).ready(function() {
 
   });
 
-  if (!localStorage.logged) {
-    $('#newToDo').css('display', 'none');
-    $('#logout').css('display', 'none');
-  } else {
-    $('#loginB').css('display', 'none');
-    $('#regB').css('display', 'none');
-  }
+  // if (!localStorage.logged) {
+  //   $('#newToDo').css('display', 'none');
+  //   $('#logout').css('display', 'none');
+  // } else {
+  //   $('#loginB').css('display', 'none');
+  //   $('#regB').css('display', 'none');
+  // }
 
   $(".registerLink").on("click", function(event) {
     event.preventDefault();
@@ -85,18 +85,29 @@ $(document).ready(function() {
     $("#id03").css('display', 'block');
   });
 
-  let $passwordReg = $("#passwordReg");
-  let $confirmPass = $("#oasswordConfirm")
+  $("#regB").on("click", function(event) {
+    event.preventDefault();
+    $("id03").modal('hide');
+  });
 
   //Registration validator
 
-  if ($passwordReg !== $confirmPass) {
-    alert("Nope");
-  } else {
-    alert("Woo. A match!");
-  }
+  $("#registerButton").on("click", function(event) {
+    event.preventDefault();
+      let $passwordReg = $("#passwordReg").val();
+      let $confirmPass = $("#passwordConfirm").val();
 
+      if (($passwordReg.length || $confirmPass.length) === 0) {
+        $.flash("nothing entered")
+      } else if ($passwordReg !== $confirmPass) {
+        $.flash("Passwords do not match :(")
+      } else {
+        alert("Woo. A match!");
+      }
 
+  });
+
+  // Login Validator
 
   renderToDo();
 

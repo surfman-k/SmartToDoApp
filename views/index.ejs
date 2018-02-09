@@ -17,12 +17,14 @@
     <link rel="stylesheet" href="/styles/layout.css" type="text/css" />
     <link rel="stylesheet" href="/styles/layout2.css" type="text/css" />
     <link href="https://fonts.googleapis.com/css?family=Nanum+Pen+Script" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="/styles/jquery.flash.css" />
 
     <!-- scripts -->
     <script type="text/javascript" src="/vendor/jquery-3.0.0.js"></script>
     <script type="text/javascript" src="/scripts/app.js"></script>
     <script src="/js/jquery.min.js"></script>
     <script src="/js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="/scripts/jquery.flash.js"></script>
 
   </head>
 
@@ -119,7 +121,8 @@
                         </div>
                     </div>
                 </div>
-                <button type="submit" class="btn btn-success btn-sm">Sign in</button>
+                <button id="registerButton" type="submit" class="btn btn-success btn-sm">Register</button>
+                <button type="reset" class="btn btn-default btn-sm" onclick="document.getElementById('id03').style.display='none'">Cancel</button>
               </form>
             </div>
         </div>
