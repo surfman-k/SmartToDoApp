@@ -6,7 +6,7 @@ exports.up = function(knex, Promise) {
 };
 
 exports.down = function(knex, Promise) {
-    return knex.schema.table('todoilst', function (table) {
+    return knex.schema.table('todolist', function (table) {
     table.dropColumn('comment');
   });
 };
