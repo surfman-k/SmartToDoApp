@@ -106,6 +106,24 @@ app.post("/login", (req, res) => {
 	res.redirect("/");
 });
 
+
+app.post("/newToDo", (req, res) => {
+
+	let insert1 = {name: req.body.todo, user: 2, category: 1, createdOn: '2018-02-12', completeBy: '2018-02-14', comment: '', checked: false };
+
+	knex.insert(insert1).into("todolsit").then(function (id) {})
+	.catch(function(error) {
+  		console.error(error.detail);
+	})
+	.finally(function() {
+		knex.destroy();
+	});
+
+	res.redirect("/");
+});
+
+
+
 app.listen(PORT, () => {
   console.log("Example app listening on port " + PORT);
 });
