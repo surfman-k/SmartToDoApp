@@ -74,10 +74,14 @@ $(document).ready(function() {
 
 $(document).ready(function() {
 
+
+
 if (!localStorage.logged) {
+    $('html').css("background-image", "url(/image/bg3.png)"); 
     $('#newToDo').css('display', 'none');
     $('#logout').css('display', 'none');
 } else {
+    $('html').css("background-image", "url(/image/bg2.png)"); 
     $('#loginB').css('display', 'none');
     $('#regB').css('display', 'none');
 }
