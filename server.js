@@ -62,8 +62,11 @@ app.post("/reg", (req, res) => {
 	let insert1 = {name: username, password: hashed};
 
 	knex.insert(insert1).into("users").then(function (id) {})
+	.catch(function(error) {
+  		console.error(error.detail);
+	})
 	.finally(function() {
-	  knex.destroy();
+		knex.destroy();
 	});
 
 	res.redirect("/");
@@ -79,6 +82,9 @@ app.post("/login", (req, res) => {
 		} else {
 			console.log('nope');
 		}
+	})
+	.catch(function(error) {
+  		console.error(error.detail);
 	});
 	res.redirect("/");
 });
