@@ -33,6 +33,28 @@ $(() => {
     .done(location.reload());
   });
 
+   $('.regForm').submit(function(e) {
+    e.preventDefault();
+    let uname = ($('#reguname').val());
+    let psw = ($('#passwordReg').val());
+ 
+    $.ajax({
+    type: "POST",
+    url: "/reg",
+    async: true,
+    data: {uname: uname, psw: psw}
+    })
+    .done(localStorage.setItem("user", uname))
+    .done(location.reload());
+  });
+
+   $('#logout').click(function(e) {
+    e.preventDefault();
+    localStorage.removeItem("user");
+    location.reload();
+  });
+
+
   function renderToDo(incoming) {
     for (let i = 1; i < 2; i++) {
       $(".movies .list-group").append(createToDoElement());
@@ -114,20 +136,20 @@ if (!localStorage.user) {
 
   //Registration validator
 
-  $("#registerButton").on("click", function(event) {
-    event.preventDefault();
-      let $passwordReg = $("#passwordReg").val();
-      let $confirmPass = $("#passwordConfirm").val();
+  // $("#registerButton").on("click", function(event) {
+  //   event.preventDefault();
+  //     let $passwordReg = $("#passwordReg").val();
+  //     let $confirmPass = $("#passwordConfirm").val();
 
-      if (($passwordReg.length || $confirmPass.length) === 0) {
-        $.flash("nothing entered")
-      } else if ($passwordReg !== $confirmPass) {
-        $.flash("Passwords do not match :(")
-      } else {
-        alert("Woo. A match!");
-      }
+  //     if (($passwordReg.length || $confirmPass.length) === 0) {
+  //       $.flash("nothing entered")
+  //     } else if ($passwordReg !== $confirmPass) {
+  //       $.flash("Passwords do not match :(")
+  //     } else {
+  //       alert("Woo. A match!");
+  //     }
 
-  });
+  // });
 
   // Login Validator
 
