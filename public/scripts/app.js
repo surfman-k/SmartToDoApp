@@ -39,12 +39,6 @@ $(document).ready(function() {
       }
     });
 
-
-
-
-
-
-
   function renderToDoElement(data, boolean) {
 
     let $toDoMain = $("<a>").attr("href", "#")
@@ -146,7 +140,7 @@ $(document).ready(function() {
   // });
 
 
-//AJAX for login form
+  //AJAX for login form
   $('.loginForm').submit(function(e) {
     e.preventDefault();
     let uname = ($('#username').val());
@@ -168,7 +162,7 @@ $(document).ready(function() {
     });
   });
 
-//AJAX for registration form
+  //AJAX for registration form
    $('.regForm').submit(function(e) {
     e.preventDefault();
     let uname = ($('#reguname').val());
@@ -190,7 +184,7 @@ $(document).ready(function() {
     });
   });
 
-//AJAX for logout button
+  //AJAX for logout button
    $('#logout').click(function(e) {
     e.preventDefault();
     localStorage.removeItem("user");
@@ -198,7 +192,7 @@ $(document).ready(function() {
   });
 
 
-//AJAX for adding a ToDo Item
+  //AJAX for adding a ToDo Item
   //  $('.toDoForm').submit(function(e) {
   //   e.preventDefault();
   //   let tdname = ($('#tdname').val());
