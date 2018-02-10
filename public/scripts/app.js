@@ -1,22 +1,37 @@
-// $(() => {
-//   $.ajax({
-//     method: "GET",
-//     url: "/api/todoList"
-//   }).done((todoList) => {
-//     for(let obj of todoList) {
-//       console.log(obj);
-//.    }
-//
-//.    url: "/api/users"
-//   }).done((users) => {
-//     for(let user of users) {
-//       $("<div>").text(user.name).appendTo($("body"));
-//     }
-//   });
-// });
 
 
 $(document).ready(function() {
+
+  const todos = [];
+
+$(() => {
+  $.ajax({
+    method: "GET",
+    url: "/api/todoList"
+  }).done((todolist) => {
+    for(let obj of todolist) {
+      todos.push(obj);
+      //console.log(obj);
+   }
+});
+
+  console.log(todos);
+
+
+  $('.loginForm').submit(function(e) {
+    e.preventDefault();
+    console.log("Clicked Login!!! ");
+    let uname = ($('#username').val());
+    let psw = ($('#inputPassword3').val());
+    console.log(uname);
+    console.log(psw);
+    $.ajax({
+    type: "POST",
+    url: "/login",
+    async: true,
+    data: {uname: uname, psw: psw}
+    });
+  });
 
   function renderToDo(incoming) {
     for (let i = 1; i < 2; i++) {
@@ -118,5 +133,6 @@ $(document).ready(function() {
 
   renderToDo();
 
+});
 });
 

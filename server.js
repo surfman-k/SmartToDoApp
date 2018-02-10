@@ -82,14 +82,14 @@ app.post("/reg", (req, res) => {
 });
 
 //Login functionality
-app.post("/login", (req, res) => {
+app.post("/login", (data, res) => {
 
-	knex('users').where({name: req.body.uname}).select('password').then(function(id) {
+	knex('users').where({name: data.body.uname}).select('password').then(function(id) {
 		return id[0].password;
 	})
 	.then(function(pass){
-		if(bcrypt.compareSync(req.body.psw, pass)){
-			let payload = {user : req.body.uname};
+		if(bcrypt.compareSync(data.body.psw, pass)){
+			let payload = {user : data.body.uname};
 			console.log(payload);
 			jwt.sign(payload, process.env.secretKEY, function(err, token) {
   				console.log(token);
@@ -109,7 +109,7 @@ app.post("/login", (req, res) => {
 
 app.post("/newToDo", (req, res) => {
 
-	let insert1 = {name: req.body.todo, user: 2, category: 1, createdOn: '2018-02-12', completeBy: '2018-02-14', comment: '', checked: false };
+	let insert1 = {name: req.body.todo, user: 17, category: 1, createdOn: '2018-02-12', completeBy: '2018-02-14', comment: '', checked: false };
 
 	knex.insert(insert1).into("todolsit").then(function (id) {})
 	.catch(function(error) {
