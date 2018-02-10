@@ -8,53 +8,44 @@ $(document).ready(function() {
     for(let obj of todolist) {
       if (obj.category === 1) {
         if(obj.checked === false ) {
-          $(".movies .list-group").prepend(renderToDoElement(obj));
+          $(".movies .list-group").prepend(renderToDoElement(obj, false));
         } else {
           console.log("this works :)")
-          $(".movies .done" ).prepend(renderToDoElement(obj));
+          $(".movies .done" ).prepend(renderToDoElement(obj, true));
           console.log("finding?" + $(".list-group .movies .done" ));
         }
       }
 
       if (obj.category === 2) {
         if(obj.checked === false ) {
-          $(".books .list-group").prepend(renderToDoElement(obj));
+          $(".books .list-group").prepend(renderToDoElement(obj, false));
         } else {
-          $(".books .done" ).prepend(renderToDoElement(obj));
+          $(".books .done" ).prepend(renderToDoElement(obj, true));
         }
       }
 
       if (obj.category === 3) {
         if(obj.checked === false ) {
-          $(".rest .list-group").prepend(renderToDoElement(obj));
+          $(".rest .list-group").prepend(renderToDoElement(obj, false));
         } else {
-          $(".rest .done" ).prepend(renderToDoElement(obj));
+          $(".rest .done" ).prepend(renderToDoElement(obj, true));
         }
       }
 
       if (obj.category === 4) {
         if(obj.checked === false ) {
-          $(".product .list-group").prepend(renderToDoElement(obj));
+          $(".product .list-group").prepend(renderToDoElement(obj, false));
         } else {
-          $(".product .done" ).prepend(renderToDoElement(obj));
+          $(".product .done" ).prepend(renderToDoElement(obj, true));
         }
       }
     }
   });
 
-  // function renderToDoDone(data) {
-
-
-  //   }
-
-  // }
 
 
 
-
-  function renderToDoElement(data) {
-
-
+  function renderToDoElement(data, boolean) {
 
     let $toDoMain = $("<a>").attr("href", "#")
                             .addClass("list-group-item list-group-item-action flex-column align-items-start");
@@ -87,6 +78,19 @@ $(document).ready(function() {
     let $creationDate = $("<small>").text(data.createdOn);
 
     $toDoMain.append($creationDate);
+
+    if (boolean === true) {
+
+      let $doneContainer = $("<div>")
+      let $doneH3 = $("<h3>").text("Done:");
+      let $doneDiv = $("<div>").addClass(".finished");
+
+      $doneContainer.append($doneH3);
+      $doneDiv.append($toDoMain);
+      $doneContainer.append($doneDiv);
+
+      return $doneContainer;
+    }
 
     return $toDoMain;
   }
