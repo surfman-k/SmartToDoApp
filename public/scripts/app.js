@@ -42,7 +42,8 @@ $(document).ready(function() {
   function renderToDoElement(data, boolean) {
 
     let $toDoMain = $("<a>").attr("href", "#")
-                            .addClass("list-group-item list-group-item-action flex-column align-items-start");
+                            .addClass("list-group-item list-group-item-action flex-column align-items-start")
+                            .attr("ident", data.id);
     let $mainContainer = $("<div>").addClass("d-flex w-100 justify-content-between");
 
     $toDoMain.append($mainContainer);
