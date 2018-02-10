@@ -94,7 +94,7 @@ app.post("/login", (data, res) => {
   				res.status(201).send(token);
 			});
 		} else {
-			console.log('password wrong!');
+			res.status(201).send('password wrong!');
 		}
 	})
 	.catch(function(error) {

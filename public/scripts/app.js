@@ -33,11 +33,11 @@ $(() => {
     .done(function(data){
       if(data.length > 120){
         localStorage.setItem("user", uname);
+        location.reload();
       } else {
-        alert('Please Verify your Credentials!');
+        alert("Verify your credentials!");
       }
-    })
-    .done(location.reload());
+    });
   });
 
 //AJAX for registration form
