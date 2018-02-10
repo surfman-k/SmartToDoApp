@@ -77,8 +77,6 @@ app.post("/reg", (data, res) => {
   		console.log(token);
   		res.status(201).send(token);
 	});
-
-	res.redirect("/");
 });
 
 //Login functionality
@@ -102,8 +100,6 @@ app.post("/login", (data, res) => {
 	.catch(function(error) {
   		console.error(error.detail);
 	});
-
-	res.redirect("/");
 });
 
 //Creating a new ToDo

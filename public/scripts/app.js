@@ -18,6 +18,9 @@ $(() => {
   console.log(todos);
 
 
+
+
+//AJAX for login form
   $('.loginForm').submit(function(e) {
     e.preventDefault();
     let uname = ($('#username').val());
@@ -29,10 +32,17 @@ $(() => {
     async: true,
     data: {uname: uname, psw: psw}
     })
-    .done(localStorage.setItem("user", uname))
+    .done(function(data){
+      if(data.length > 120){
+        localStorage.setItem("user", uname);
+      } else {
+        alert('Please Verify your Credentials!');
+      }
+    })
     .done(location.reload());
   });
 
+//AJAX for registration form
    $('.regForm').submit(function(e) {
     e.preventDefault();
     let uname = ($('#reguname').val());
@@ -44,15 +54,42 @@ $(() => {
     async: true,
     data: {uname: uname, psw: psw}
     })
-    .done(localStorage.setItem("user", uname))
+    .done(function(data){
+      if(data.length > 120){
+        localStorage.setItem("user", uname);
+      } else {
+        alert('Username already exists!');
+      }
+    })
     .done(location.reload());
   });
 
+//AJAX for logout button
    $('#logout').click(function(e) {
     e.preventDefault();
     localStorage.removeItem("user");
     location.reload();
   });
+
+
+//AJAX for adding a ToDo Item
+   $('.toDoForm').submit(function(e) {
+    e.preventDefault();
+    let uname = ($('#reguname').val());
+    let psw = ($('#passwordReg').val());
+ 
+    $.ajax({
+    type: "POST",
+    url: "/newToDo",
+    async: true,
+    data: {uname: uname, psw: psw}
+    })
+    .done(localStorage.setItem("user", uname))
+    .done(location.reload());
+  });
+
+
+
 
 
   function renderToDo(incoming) {
