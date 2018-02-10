@@ -42,7 +42,7 @@
     </nav>
 
   <div id="id01" class="myModal">
-    <form class="loginForm" action="/login" method="post">
+    <form class="loginForm">
       <div class="row">
           <div class="col-md-12">
               <div class="panel panel-default">
@@ -51,10 +51,10 @@
                   <div class="panel-body">
                       <form class="form-horizontal" role="form">
                       <div class="form-group">
-                          <label for="inputEmail3" class="col-sm-3 control-label">
-                              Email</label>
+                          <label class="col-sm-3 control-label">
+                              Username</label>
                           <div class="col-sm-12">
-                              <input type="email" class="form-control" id="inputEmail3" placeholder="Email" required>
+                              <input id="username" type="text" class="form-control" placeholder="Username" required/>
                           </div>
                       </div>
                       <div class="form-group">
@@ -76,8 +76,7 @@
                       </div>
                       <div class="form-group last">
                           <div class="col-sm-offset-3 col-sm-12">
-                              <button type="submit" class="btn btn-success btn-sm">
-                                  Sign in</button>
+                              <button type="submit" class="btn btn-success btn-sm">Sign in</button>
                                    <button type="reset" class="btn btn-default btn-sm" onclick="document.getElementById('id01').style.display='none'">
                                   Cancel</button>
 
@@ -96,7 +95,7 @@
 </div>
 
 <div id="id03" class="myModal">
-        <form class="regForm" action="/reg" method="post">
+        <form class="regForm">
     <div class="row">
         <div class="col-md-12">
             <div class="panel panel-default">
@@ -107,7 +106,7 @@
                     <div class="form-group">
                         <div class="input-group">
                             <span class="input-group-addon"><span class="glyphicon glyphicon-user"></span></span>
-                            <input type="text" class="form-control" placeholder="Username" />
+                            <input id="reguname" type="text" class="form-control" placeholder="Username" />
                         </div>
                     </div>
                     <div class="form-group">
@@ -185,11 +184,11 @@
 -->
 
       <div id="id02" class="myModal">
-        <form>
+        <form class='toDoForm'>
           <h2>Add a New To-Do</h2><br>
           <div>
             <h4>To-Do:</h4>
-            <input type="text" style="width: 30em" name="todo" placeholder="Got a cool book or a café you'd like to try?">
+            <input type="text" name="todo" placeholder="Got a cool book or a café you'd like to try?">
           </div>
           <div>
             <h4>Complete To-Do By:</h4>

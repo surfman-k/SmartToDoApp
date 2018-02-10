@@ -57,9 +57,9 @@ app.get("/", (req, res) => {
 });
 
 //Registration functionality
-app.post("/reg", (req, res) => {
-	let textpass = req.body.psw;
-	let username = req.body.uname;
+app.post("/reg", (data, res) => {
+	let textpass = data.body.psw;
+	let username = data.body.uname;
 	let hashed = bcrypt.hashSync(textpass, 10);
 
 	let insert1 = {name: username, password: hashed};
@@ -72,24 +72,22 @@ app.post("/reg", (req, res) => {
 		knex.destroy();
 	});
 
-	let payload = {user : req.body.uname};
+	let payload = {user : data.body.uname};
 	jwt.sign(payload, process.env.secretKEY, function(err, token) {
   		console.log(token);
   		res.status(201).send(token);
 	});
-
-	res.redirect("/");
 });
 
 //Login functionality
-app.post("/login", (req, res) => {
+app.post("/login", (data, res) => {
 
-	knex('users').where({name: req.body.uname}).select('password').then(function(id) {
+	knex('users').where({name: data.body.uname}).select('password').then(function(id) {
 		return id[0].password;
 	})
 	.then(function(pass){
-		if(bcrypt.compareSync(req.body.psw, pass)){
-			let payload = {user : req.body.uname};
+		if(bcrypt.compareSync(data.body.psw, pass)){
+			let payload = {user : data.body.uname};
 			console.log(payload);
 			jwt.sign(payload, process.env.secretKEY, function(err, token) {
   				console.log(token);
@@ -102,14 +100,12 @@ app.post("/login", (req, res) => {
 	.catch(function(error) {
   		console.error(error.detail);
 	});
-
-	res.redirect("/");
 });
 
-
+//Creating a new ToDo
 app.post("/newToDo", (req, res) => {
 
-	let insert1 = {name: req.body.todo, user: 2, category: 1, createdOn: '2018-02-12', completeBy: '2018-02-14', comment: '', checked: false };
+	let insert1 = {name: req.body.todo, user: 17, category: 1, createdOn: '2018-02-12', completeBy: '2018-02-14', comment: '', checked: false };
 
 	knex.insert(insert1).into("todolsit").then(function (id) {})
 	.catch(function(error) {

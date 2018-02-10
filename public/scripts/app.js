@@ -1,5 +1,105 @@
 $(document).ready(function() {
 
+  const todos = [];
+
+$(() => {
+  $.ajax({
+    method: "GET",
+    url: "/api/todoList"
+  }).done((todolist) => {
+    for(let obj of todolist) {
+      todos.push(obj);
+      //console.log(obj);
+   }
+});
+
+  console.log(todos);
+
+
+
+
+//AJAX for login form
+  $('.loginForm').submit(function(e) {
+    e.preventDefault();
+    let uname = ($('#username').val());
+    let psw = ($('#inputPassword3').val());
+
+    $.ajax({
+    type: "POST",
+    url: "/login",
+    async: true,
+    data: {uname: uname, psw: psw}
+    })
+    .done(function(data){
+      if(data.length > 120){
+        localStorage.setItem("user", uname);
+      } else {
+        alert('Please Verify your Credentials!');
+      }
+    })
+    .done(location.reload());
+  });
+
+//AJAX for registration form
+   $('.regForm').submit(function(e) {
+    e.preventDefault();
+    let uname = ($('#reguname').val());
+    let psw = ($('#passwordReg').val());
+
+    $.ajax({
+    type: "POST",
+    url: "/reg",
+    async: true,
+    data: {uname: uname, psw: psw}
+    })
+    .done(function(data){
+      if(data.length > 120){
+        localStorage.setItem("user", uname);
+      } else {
+        alert('Username already exists!');
+      }
+    })
+    .done(location.reload());
+  });
+
+//AJAX for logout button
+   $('#logout').click(function(e) {
+    e.preventDefault();
+    localStorage.removeItem("user");
+    location.reload();
+  });
+
+
+//AJAX for adding a ToDo Item
+   $('.toDoForm').submit(function(e) {
+    e.preventDefault();
+    let uname = ($('#reguname').val());
+    let psw = ($('#passwordReg').val());
+
+    $.ajax({
+    type: "POST",
+    url: "/newToDo",
+    async: true,
+    data: {uname: uname, psw: psw}
+    })
+    .done(localStorage.setItem("user", uname))
+    .done(location.reload());
+  });
+
+
+
+
+
+  function renderToDo(incoming) {
+    for (let i = 1; i < 2; i++) {
+      $(".movies .list-group").append(createToDoElement());
+      $(".books .list-group").append(createToDoElement());
+      $(".rest .list-group").append(createToDoElement());
+      $(".product .list-group").append(createToDoElement());
+    }
+
+  }
+
 
   function createToDoElement(data) {
     console.log(data);
@@ -48,15 +148,15 @@ $(document).ready(function() {
 
 
 
-// if (!localStorage.logged) {
-//     $('html').css("background-image", "url(/image/bg3.png)");
-//     $('#newToDo').css('display', 'none');
-//     $('#logout').css('display', 'none');
-// } else {
-//     $('html').css("background-image", "url(/image/bg2.png)");
-//     $('#loginB').css('display', 'none');
-//     $('#regB').css('display', 'none');
-// }
+if (!localStorage.user) {
+    $('html').css("background-image", "url(/image/bg3.png)");
+    $('#newToDo').css('display', 'none');
+    $('#logout').css('display', 'none');
+} else {
+    $('html').css("background-image", "url(/image/bg2.png)");
+    $('#loginB').css('display', 'none');
+    $('#regB').css('display', 'none');
+}
 
 
   $(".registerLink").on("click", function(event) {
@@ -72,20 +172,20 @@ $(document).ready(function() {
 
   //Registration validator
 
-  $("#registerButton").on("click", function(event) {
-    event.preventDefault();
-      let $passwordReg = $("#passwordReg").val();
-      let $confirmPass = $("#passwordConfirm").val();
+  // $("#registerButton").on("click", function(event) {
+  //   event.preventDefault();
+  //     let $passwordReg = $("#passwordReg").val();
+  //     let $confirmPass = $("#passwordConfirm").val();
 
-      if (($passwordReg.length || $confirmPass.length) === 0) {
-        $.flash("nothing entered")
-      } else if ($passwordReg !== $confirmPass) {
-        $.flash("Passwords do not match :(")
-      } else {
-        alert("Woo. A match!");
-      }
+  //     if (($passwordReg.length || $confirmPass.length) === 0) {
+  //       $.flash("nothing entered")
+  //     } else if ($passwordReg !== $confirmPass) {
+  //       $.flash("Passwords do not match :(")
+  //     } else {
+  //       alert("Woo. A match!");
+  //     }
 
-  });
+  // });
 
   // Login Validator
 
@@ -115,5 +215,6 @@ $(document).ready(function() {
     }
   });
 
+});
 });
 
