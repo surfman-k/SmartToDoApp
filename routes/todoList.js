@@ -10,6 +10,7 @@ module.exports = (knex) => {
       .select("*")
       .from("todolist")
       .then((results) => {
+        console.log(results);
         res.json(results);
     });
   });

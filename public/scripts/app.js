@@ -1,46 +1,32 @@
-// $(() => {
-//   $.ajax({
-//     method: "GET",
-//     url: "/api/todoList"
-//   }).done((todoList) => {
-//     for(let obj of todoList) {
-//       console.log(obj);
-//.    }
-//
-//.    url: "/api/users"
-//   }).done((users) => {
-//     for(let user of users) {
-//       $("<div>").text(user.name).appendTo($("body"));
-//     }
-//   });
-// });
-
-
 $(document).ready(function() {
 
-  function renderToDo(incoming) {
-    for (let i = 1; i < 2; i++) {
-      $(".movies .list-group").append(createToDoElement());
-      $(".books .list-group").append(createToDoElement());
-      $(".rest .list-group").append(createToDoElement());
-      $(".product .list-group").append(createToDoElement());
-    }
-
-  }
+const dataMovie = [];
+const dataBooks = [];
+const dataRest = [];
+const dataProd = [];
 
 
-  function createToDoElement(cb) {
+  // function renderToDo(incoming) {
+  //     $(".movies .list-group").append(createToDoElement(incoming));
+  //     $(".books .list-group").append(createToDoElement(incoming));
+  //     $(".rest .list-group").append(createToDoElement(incoming));
+  //     $(".product .list-group").append(createToDoElement(incoming));
+  // }
+
+
+  function createToDoElement(data) {
+    console.log(data);
     let $toDoMain = $("<a>").attr("href", "#")
                             .addClass("list-group-item list-group-item-action flex-column align-items-start");
     let $mainContainer = $("<div>").addClass("d-flex w-100 justify-content-between");
 
     $toDoMain.append($mainContainer);
 
-    let $toDoTitle = $("<h5>").addClass("mb-1").text("To Do Item Works!");
+    let $toDoTitle = $("<h5>").addClass("mb-1").text(data.name);
 
     $mainContainer.append($toDoTitle);
 
-    let $toDoBy = $("<small>").text("The due date will come here");
+    let $toDoBy = $("<small>").text(data.completeBy);
 
     $mainContainer.append($toDoBy);
 
@@ -54,11 +40,11 @@ $(document).ready(function() {
     $labelButton.append($inputButton);
     $labelButton.append($buttonSpan);
 
-    let $comment = $("<p>").addClass("mb-1").text("Donec id elit non mi porta gravida at eget metus. Maecenas sed diam eget risus varius blandit");
+    let $comment = $("<p>").addClass("mb-1").text(data.comment);
 
     $toDoMain.append($comment);
 
-    let $creationDate = $("<small>").text("Date of creation here");
+    let $creationDate = $("<small>").text(data.createdOn);
 
     $toDoMain.append($creationDate);
 
@@ -116,7 +102,16 @@ $(document).ready(function() {
 
   // Login Validator
 
-  renderToDo();
+   $.ajax({
+    method: "GET",
+    url: "/api/todoList"
+  }).done((todolist) => {
+    for(let obj of todolist) {
+      if (obj.category === 1) {
+        $(".list-group .movies").append(createToDoElement(obj));
+      }
+    }
+  });
 
 });
 
