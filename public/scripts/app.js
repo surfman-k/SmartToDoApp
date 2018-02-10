@@ -193,21 +193,22 @@ $(document).ready(function() {
   });
 
 
-  //AJAX for adding a ToDo Item
-  //  $('.toDoForm').submit(function(e) {
-  //   e.preventDefault();
-  //   let tdname = ($('#tdname').val());
-  //   let date = ($('#passwordReg').val());
+  // AJAX for adding a ToDo Item
+   $('.toDoForm').submit(function(e) {
+    e.preventDefault();
+    let tdname = ($('#tdname').val());
+    let todoUser = localStorage.getItem("user");
+    let today = new Date();
+    let dateCreated = (`${today.getFullYear()}-${today.getMonth()+1}-${today.getDate()}`);
 
-  //   $.ajax({
-  //   type: "POST",
-  //   url: "/newToDo",
-  //   async: true,
-  //   data: {}
-  //   })
-  //   .done(localStorage.setItem("user", uname))
-  //   .done(location.reload());
-  // });
+    $.ajax({
+    type: "POST",
+    url: "/newToDo",
+    async: true,
+    data: {name: tdname, user: todoUser, category: 3, createdOn: dateCreated, completeBy: dateCreated, comment: "", checked: false}
+    })
+    .done(location.reload());
+  });
 
 
 
