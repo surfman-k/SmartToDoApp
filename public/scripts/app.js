@@ -13,32 +13,36 @@ $(document).ready(function() {
           $(".movies .done" ).prepend(renderToDoElement(obj, true));
         }
       }
+        if (obj.category === 2) {
+          if(obj.checked === false ) {
+            $(".books .list-group").prepend(renderToDoElement(obj, false));
+          } else {
+            $(".books .done" ).prepend(renderToDoElement(obj, true));
+          }
+        }
 
-      if (obj.category === 2) {
-        if(obj.checked === false ) {
-          $(".books .list-group").prepend(renderToDoElement(obj, false));
-        } else {
-          $(".books .done" ).prepend(renderToDoElement(obj, true));
+        if (obj.category === 3) {
+          if(obj.checked === false ) {
+            $(".rest .list-group").prepend(renderToDoElement(obj, false));
+          } else {
+            $(".rest .done" ).prepend(renderToDoElement(obj, true));
+          }
+        }
+
+        if (obj.category === 4) {
+          if(obj.checked === false ) {
+            $(".product .list-group").prepend(renderToDoElement(obj, false));
+          } else {
+            $(".product .done" ).prepend(renderToDoElement(obj, true));
+          }
         }
       }
+    });
 
-      if (obj.category === 3) {
-        if(obj.checked === false ) {
-          $(".rest .list-group").prepend(renderToDoElement(obj, false));
-        } else {
-          $(".rest .done" ).prepend(renderToDoElement(obj, true));
-        }
-      }
 
-      if (obj.category === 4) {
-        if(obj.checked === false ) {
-          $(".product .list-group").prepend(renderToDoElement(obj, false));
-        } else {
-          $(".product .done" ).prepend(renderToDoElement(obj, true));
-        }
-      }
-    }
-  });
+
+
+
 
 
   function renderToDoElement(data, boolean) {
@@ -77,7 +81,7 @@ $(document).ready(function() {
 
     if (boolean === true) {
 
-      let $doneContainer = $("<div>")
+      let $doneContainer = $("<div>");
       let $doneH3 = $("<h3>").text("Done:");
       let $doneDiv = $("<div>").addClass(".finished");
 
@@ -119,10 +123,10 @@ $(document).ready(function() {
     $("#id03").css('display', 'block');
   });
 
-  $("#regB").on("click", function(event) {
-    event.preventDefault();
-    $("id03").modal('hide');
-  });
+  // $("#regB").on("click", function(event) {
+  //   event.preventDefault();
+  //   $("id03").modal('hide');
+  // });
 
   //Registration validator
 
@@ -140,7 +144,9 @@ $(document).ready(function() {
   //     }
 
   // });
-  //AJAX for login form
+
+
+//AJAX for login form
   $('.loginForm').submit(function(e) {
     e.preventDefault();
     let uname = ($('#username').val());
@@ -153,8 +159,8 @@ $(document).ready(function() {
     data: {uname: uname, psw: psw}
     })
     .done(function(data){
-      if(data.length > 120){
-        localStorage.setItem("user", uname);
+      if(Number.isInteger(data.id)){
+        localStorage.setItem('user', data.id);
         location.reload();
       } else {
         alert("Verify your credentials!");
@@ -162,8 +168,8 @@ $(document).ready(function() {
     });
   });
 
-  //AJAX for registration form
-  $('.regForm').submit(function(e) {
+//AJAX for registration form
+   $('.regForm').submit(function(e) {
     e.preventDefault();
     let uname = ($('#reguname').val());
     let psw = ($('#passwordReg').val());
@@ -175,41 +181,39 @@ $(document).ready(function() {
     data: {uname: uname, psw: psw}
     })
     .done(function(data){
-      if(data.length > 120){
-        localStorage.setItem("user", uname);
+      if(Number.isInteger(data[0])){
+        localStorage.setItem("user", data[0]);
+        location.reload();
       } else {
         alert('Username already exists!');
       }
-    })
-    .done(location.reload());
+    });
   });
 
-  //AJAX for logout button
-  $('#logout').click(function(e) {
+//AJAX for logout button
+   $('#logout').click(function(e) {
     e.preventDefault();
     localStorage.removeItem("user");
     location.reload();
   });
 
 
-  //AJAX for adding a ToDo Item
-  $('.toDoForm').submit(function(e) {
-    e.preventDefault();
-    let uname = ($('#reguname').val());
-    let psw = ($('#passwordReg').val());
+//AJAX for adding a ToDo Item
+  //  $('.toDoForm').submit(function(e) {
+  //   e.preventDefault();
+  //   let tdname = ($('#tdname').val());
+  //   let date = ($('#passwordReg').val());
 
-    $.ajax({
-    type: "POST",
-    url: "/newToDo",
-    async: true,
-    data: {uname: uname, psw: psw}
-    })
-    .done(localStorage.setItem("user", uname))
-    .done(location.reload());
-  });
-
+  //   $.ajax({
+  //   type: "POST",
+  //   url: "/newToDo",
+  //   async: true,
+  //   data: {}
+  //   })
+  //   .done(localStorage.setItem("user", uname))
+  //   .done(location.reload());
+  // });
 
 
 
 });
-

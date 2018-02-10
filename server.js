@@ -64,34 +64,35 @@ app.post("/reg", (data, res) => {
 
 	let insert1 = {name: username, password: hashed};
 
-	knex.insert(insert1).into("users").then(function (id) {})
+	knex.insert(insert1)
+	.returning('id')
+	.into('users')
+	.then(function (id) {
+		let payload = {user : data.body.uname};
+		jwt.sign(payload, process.env.secretKEY, function(err, token) {
+  			console.log(token);
+  			res.status(201).send(id);
+		});
+	})
 	.catch(function(error) {
   		console.error(error.detail);
-	})
-	.finally(function() {
-		knex.destroy();
 	});
 
-	let payload = {user : data.body.uname};
-	jwt.sign(payload, process.env.secretKEY, function(err, token) {
-  		console.log(token);
-  		res.status(201).send(token);
-	});
 });
 
 //Login functionality
 app.post("/login", (data, res) => {
 
-	knex('users').where({name: data.body.uname}).select('password').then(function(id) {
-		return id[0].password;
+	knex('users').where({name: data.body.uname}).select('*').then(function(id) {
+		return {id: id[0].id, name: id[0].name, psw: id[0].password};
 	})
 	.then(function(pass){
-		if(bcrypt.compareSync(data.body.psw, pass)){
-			let payload = {user : data.body.uname};
+		if(bcrypt.compareSync(data.body.psw, pass.psw)){
+			let payload = {user : pass.name};
 			console.log(payload);
 			jwt.sign(payload, process.env.secretKEY, function(err, token) {
   				console.log(token);
-  				res.status(201).send(token);
+  				res.status(201).send({id: pass.id, token: token});
 			});
 		} else {
 			res.status(201).send('password wrong!');
