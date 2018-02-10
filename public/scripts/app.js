@@ -71,20 +71,20 @@ $(() => {
 
 
 //AJAX for adding a ToDo Item
-   $('.toDoForm').submit(function(e) {
-    e.preventDefault();
-    let uname = ($('#reguname').val());
-    let psw = ($('#passwordReg').val());
+  //  $('.toDoForm').submit(function(e) {
+  //   e.preventDefault();
+  //   let tdname = ($('#tdname').val());
+  //   let date = ($('#passwordReg').val());
 
-    $.ajax({
-    type: "POST",
-    url: "/newToDo",
-    async: true,
-    data: {uname: uname, psw: psw}
-    })
-    .done(localStorage.setItem("user", uname))
-    .done(location.reload());
-  });
+  //   $.ajax({
+  //   type: "POST",
+  //   url: "/newToDo",
+  //   async: true,
+  //   data: {}
+  //   })
+  //   .done(localStorage.setItem("user", uname))
+  //   .done(location.reload());
+  // });
 
 
 
