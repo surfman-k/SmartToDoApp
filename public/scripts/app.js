@@ -1,18 +1,5 @@
 $(document).ready(function() {
 
-const dataMovie = [];
-const dataBooks = [];
-const dataRest = [];
-const dataProd = [];
-
-
-  // function renderToDo(incoming) {
-  //     $(".movies .list-group").append(createToDoElement(incoming));
-  //     $(".books .list-group").append(createToDoElement(incoming));
-  //     $(".rest .list-group").append(createToDoElement(incoming));
-  //     $(".product .list-group").append(createToDoElement(incoming));
-  // }
-
 
   function createToDoElement(data) {
     console.log(data);
@@ -102,13 +89,28 @@ const dataProd = [];
 
   // Login Validator
 
+
+  // Injects data into columns
+
    $.ajax({
     method: "GET",
     url: "/api/todoList"
   }).done((todolist) => {
     for(let obj of todolist) {
       if (obj.category === 1) {
-        $(".list-group .movies").append(createToDoElement(obj));
+      $(".movies .list-group").prepend(createToDoElement(obj));
+      }
+
+      if (obj.category === 2) {
+      $(".books .list-group").prepend(createToDoElement(obj));
+      }
+
+      if (obj.category === 3) {
+      $(".rest .list-group").prepend(createToDoElement(obj));
+      }
+
+      if (obj.category === 4) {
+      $(".product .list-group").prepend(createToDoElement(obj));
       }
     }
   });
