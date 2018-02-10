@@ -1,108 +1,61 @@
 $(document).ready(function() {
 
-  const todos = [];
-
-$(() => {
-  $.ajax({
+    // Injects data into columns
+   $.ajax({
     method: "GET",
     url: "/api/todoList"
   }).done((todolist) => {
     for(let obj of todolist) {
-      todos.push(obj);
-      //console.log(obj);
-   }
-});
-
-  console.log(todos);
-
-
-
-
-//AJAX for login form
-  $('.loginForm').submit(function(e) {
-    e.preventDefault();
-    let uname = ($('#username').val());
-    let psw = ($('#inputPassword3').val());
-
-    $.ajax({
-    type: "POST",
-    url: "/login",
-    async: true,
-    data: {uname: uname, psw: psw}
-    })
-    .done(function(data){
-      if(data.length > 120){
-        localStorage.setItem("user", uname);
-      } else {
-        alert('Please Verify your Credentials!');
+      if (obj.category === 1) {
+        if(obj.checked === false ) {
+          $(".movies .list-group").prepend(renderToDoElement(obj));
+        } else {
+          console.log("this works :)")
+          $(".movies .done" ).prepend(renderToDoElement(obj));
+          console.log("finding?" + $(".list-group .movies .done" ));
+        }
       }
-    })
-    .done(location.reload());
-  });
 
-//AJAX for registration form
-   $('.regForm').submit(function(e) {
-    e.preventDefault();
-    let uname = ($('#reguname').val());
-    let psw = ($('#passwordReg').val());
-
-    $.ajax({
-    type: "POST",
-    url: "/reg",
-    async: true,
-    data: {uname: uname, psw: psw}
-    })
-    .done(function(data){
-      if(data.length > 120){
-        localStorage.setItem("user", uname);
-      } else {
-        alert('Username already exists!');
+      if (obj.category === 2) {
+        if(obj.checked === false ) {
+          $(".books .list-group").prepend(renderToDoElement(obj));
+        } else {
+          $(".books .done" ).prepend(renderToDoElement(obj));
+        }
       }
-    })
-    .done(location.reload());
-  });
 
-//AJAX for logout button
-   $('#logout').click(function(e) {
-    e.preventDefault();
-    localStorage.removeItem("user");
-    location.reload();
-  });
+      if (obj.category === 3) {
+        if(obj.checked === false ) {
+          $(".rest .list-group").prepend(renderToDoElement(obj));
+        } else {
+          $(".rest .done" ).prepend(renderToDoElement(obj));
+        }
+      }
 
-
-//AJAX for adding a ToDo Item
-   $('.toDoForm').submit(function(e) {
-    e.preventDefault();
-    let uname = ($('#reguname').val());
-    let psw = ($('#passwordReg').val());
-
-    $.ajax({
-    type: "POST",
-    url: "/newToDo",
-    async: true,
-    data: {uname: uname, psw: psw}
-    })
-    .done(localStorage.setItem("user", uname))
-    .done(location.reload());
-  });
-
-
-
-
-
-  function renderToDo(incoming) {
-    for (let i = 1; i < 2; i++) {
-      $(".movies .list-group").append(createToDoElement());
-      $(".books .list-group").append(createToDoElement());
-      $(".rest .list-group").append(createToDoElement());
-      $(".product .list-group").append(createToDoElement());
+      if (obj.category === 4) {
+        if(obj.checked === false ) {
+          $(".product .list-group").prepend(renderToDoElement(obj));
+        } else {
+          $(".product .done" ).prepend(renderToDoElement(obj));
+        }
+      }
     }
+  });
 
-  }
+  // function renderToDoDone(data) {
 
 
-  function createToDoElement(data) {
-    console.log(data);
+  //   }
+
+  // }
+
+
+
+
+  function renderToDoElement(data) {
+
+
+
     let $toDoMain = $("<a>").attr("href", "#")
                             .addClass("list-group-item list-group-item-action flex-column align-items-start");
     let $mainContainer = $("<div>").addClass("d-flex w-100 justify-content-between");
@@ -138,6 +91,7 @@ $(() => {
     return $toDoMain;
   }
 
+
   let $newToDo = $("#loginB");
   $newToDo.on("click", function(event) {
     event.preventDefault();
@@ -148,15 +102,15 @@ $(() => {
 
 
 
-if (!localStorage.user) {
+  if (!localStorage.user) {
     $('html').css("background-image", "url(/image/bg3.png)");
     $('#newToDo').css('display', 'none');
     $('#logout').css('display', 'none');
-} else {
+  } else {
     $('html').css("background-image", "url(/image/bg2.png)");
     $('#loginB').css('display', 'none');
     $('#regB').css('display', 'none');
-}
+  }
 
 
   $(".registerLink").on("click", function(event) {
@@ -187,34 +141,76 @@ if (!localStorage.user) {
 
   // });
 
-  // Login Validator
+  //AJAX for login form
+  $('.loginForm').submit(function(e) {
+    e.preventDefault();
+    let uname = ($('#username').val());
+    let psw = ($('#inputPassword3').val());
 
-
-  // Injects data into columns
-
-   $.ajax({
-    method: "GET",
-    url: "/api/todoList"
-  }).done((todolist) => {
-    for(let obj of todolist) {
-      if (obj.category === 1) {
-      $(".movies .list-group").prepend(createToDoElement(obj));
+    $.ajax({
+    type: "POST",
+    url: "/login",
+    async: true,
+    data: {uname: uname, psw: psw}
+    })
+    .done(function(data){
+      if(data.length > 120){
+        localStorage.setItem("user", uname);
+      } else {
+        alert('Please Verify your Credentials!');
       }
-
-      if (obj.category === 2) {
-      $(".books .list-group").prepend(createToDoElement(obj));
-      }
-
-      if (obj.category === 3) {
-      $(".rest .list-group").prepend(createToDoElement(obj));
-      }
-
-      if (obj.category === 4) {
-      $(".product .list-group").prepend(createToDoElement(obj));
-      }
-    }
+    })
+    .done(location.reload());
   });
 
-});
+  //AJAX for registration form
+  $('.regForm').submit(function(e) {
+    e.preventDefault();
+    let uname = ($('#reguname').val());
+    let psw = ($('#passwordReg').val());
+
+    $.ajax({
+    type: "POST",
+    url: "/reg",
+    async: true,
+    data: {uname: uname, psw: psw}
+    })
+    .done(function(data){
+      if(data.length > 120){
+        localStorage.setItem("user", uname);
+      } else {
+        alert('Username already exists!');
+      }
+    })
+    .done(location.reload());
+  });
+
+  //AJAX for logout button
+  $('#logout').click(function(e) {
+    e.preventDefault();
+    localStorage.removeItem("user");
+    location.reload();
+  });
+
+
+  //AJAX for adding a ToDo Item
+  $('.toDoForm').submit(function(e) {
+    e.preventDefault();
+    let uname = ($('#reguname').val());
+    let psw = ($('#passwordReg').val());
+
+    $.ajax({
+    type: "POST",
+    url: "/newToDo",
+    async: true,
+    data: {uname: uname, psw: psw}
+    })
+    .done(localStorage.setItem("user", uname))
+    .done(location.reload());
+  });
+
+
+
+
 });
 
