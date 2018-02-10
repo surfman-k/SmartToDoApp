@@ -64,19 +64,20 @@ app.post("/reg", (data, res) => {
 
 	let insert1 = {name: username, password: hashed};
 
-	knex.insert(insert1).into("users").then(function (id) {})
+	knex.insert(insert1)
+	.returning('id')
+	.into('users')
+	.then(function (id) {
+		let payload = {user : data.body.uname};
+		jwt.sign(payload, process.env.secretKEY, function(err, token) {
+  			console.log(token);
+  			res.status(201).send(id);
+		});
+	})
 	.catch(function(error) {
   		console.error(error.detail);
-	})
-	.finally(function() {
-		knex.destroy();
 	});
 
-	let payload = {user : data.body.uname};
-	jwt.sign(payload, process.env.secretKEY, function(err, token) {
-  		console.log(token);
-  		res.status(201).send(token);
-	});
 });
 
 //Login functionality

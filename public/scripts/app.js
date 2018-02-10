@@ -53,13 +53,13 @@ $(() => {
     data: {uname: uname, psw: psw}
     })
     .done(function(data){
-      if(data.length > 120){
-        localStorage.setItem("user", uname);
+      if(Number.isInteger(data[0])){
+        localStorage.setItem("user", data[0]);
+        location.reload();
       } else {
         alert('Username already exists!');
       }
-    })
-    .done(location.reload());
+    });
   });
 
 //AJAX for logout button
@@ -86,19 +86,6 @@ $(() => {
     .done(location.reload());
   });
 
-
-
-
-
-  function renderToDo(incoming) {
-    for (let i = 1; i < 2; i++) {
-      $(".movies .list-group").append(createToDoElement());
-      $(".books .list-group").append(createToDoElement());
-      $(".rest .list-group").append(createToDoElement());
-      $(".product .list-group").append(createToDoElement());
-    }
-
-  }
 
 
   function createToDoElement(data) {
@@ -165,10 +152,10 @@ if (!localStorage.user) {
     $("#id03").css('display', 'block');
   });
 
-  $("#regB").on("click", function(event) {
-    event.preventDefault();
-    $("id03").modal('hide');
-  });
+  // $("#regB").on("click", function(event) {
+  //   event.preventDefault();
+  //   $("id03").modal('hide');
+  // });
 
   //Registration validator
 
