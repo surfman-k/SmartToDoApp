@@ -82,16 +82,16 @@ app.post("/reg", (data, res) => {
 //Login functionality
 app.post("/login", (data, res) => {
 
-	knex('users').where({name: data.body.uname}).select('password').then(function(id) {
-		return id[0].password;
+	knex('users').where({name: data.body.uname}).select('*').then(function(id) {
+		return {id: id[0].id, name: id[0].name, psw: id[0].password};
 	})
 	.then(function(pass){
-		if(bcrypt.compareSync(data.body.psw, pass)){
-			let payload = {user : data.body.uname};
+		if(bcrypt.compareSync(data.body.psw, pass.psw)){
+			let payload = {user : pass.name};
 			console.log(payload);
 			jwt.sign(payload, process.env.secretKEY, function(err, token) {
   				console.log(token);
-  				res.status(201).send(token);
+  				res.status(201).send({id: pass.id, token: token});
 			});
 		} else {
 			res.status(201).send('password wrong!');

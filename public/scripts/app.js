@@ -31,8 +31,8 @@ $(() => {
     data: {uname: uname, psw: psw}
     })
     .done(function(data){
-      if(data.length > 120){
-        localStorage.setItem("user", uname);
+      if(Number.isInteger(data.id)){
+        localStorage.setItem('user', data.id);
         location.reload();
       } else {
         alert("Verify your credentials!");
