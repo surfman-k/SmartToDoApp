@@ -104,19 +104,14 @@ app.post("/login", (data, res) => {
 });
 
 //Creating a new ToDo
-app.post("/newToDo", (req, res) => {
+app.post("/newToDo", (data, res) => {
 
-	let insert1 = {name: req.body.todo, user: 17, category: 1, createdOn: '2018-02-12', completeBy: '2018-02-14', comment: '', checked: false };
+	let insert1 = {name: data.body.name, user: data.body.user, category: data.body.category, createdOn: data.body.createdOn, completeBy: data.body.completeBy, comment: data.body.comment, checked: false };
 
-	knex.insert(insert1).into("todolsit").then(function (id) {})
+	knex.insert(insert1).into("todolist").then(function (id) {})
 	.catch(function(error) {
   		console.error(error.detail);
-	})
-	.finally(function() {
-		knex.destroy();
 	});
-
-	res.redirect("/");
 });
 
 
