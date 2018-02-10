@@ -20,17 +20,17 @@ $(() => {
 
   $('.loginForm').submit(function(e) {
     e.preventDefault();
-    console.log("Clicked Login!!! ");
     let uname = ($('#username').val());
     let psw = ($('#inputPassword3').val());
-    console.log(uname);
-    console.log(psw);
+ 
     $.ajax({
     type: "POST",
     url: "/login",
     async: true,
     data: {uname: uname, psw: psw}
-    });
+    })
+    .done(localStorage.setItem("user", uname))
+    .done(location.reload());
   });
 
   function renderToDo(incoming) {
@@ -90,15 +90,15 @@ $(() => {
 
 
 
-// if (!localStorage.logged) {
-//     $('html').css("background-image", "url(/image/bg3.png)");
-//     $('#newToDo').css('display', 'none');
-//     $('#logout').css('display', 'none');
-// } else {
-//     $('html').css("background-image", "url(/image/bg2.png)");
-//     $('#loginB').css('display', 'none');
-//     $('#regB').css('display', 'none');
-// }
+if (!localStorage.user) {
+    $('html').css("background-image", "url(/image/bg3.png)");
+    $('#newToDo').css('display', 'none');
+    $('#logout').css('display', 'none');
+} else {
+    $('html').css("background-image", "url(/image/bg2.png)");
+    $('#loginB').css('display', 'none');
+    $('#regB').css('display', 'none');
+}
 
 
   $(".registerLink").on("click", function(event) {
