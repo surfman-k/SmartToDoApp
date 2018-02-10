@@ -6,8 +6,10 @@ exports.seed = function(knex, Promise) {
         knex('todolist').insert({name: 'Everybody Poops', user: 2, category: 2, createdOn: '09-12-2017', completeBy: '11-12-2017', comment: 'My Fave Book!', checked: false }),
         knex('todolist').insert({name: 'Mom and Pop sandwich shop', user: 3, category: 3, createdOn: '09-12-2017', completeBy: '11-12-2017', comment: 'Recommend by Jawsh!', checked: false }),
         knex('todolist').insert({name: 'Dyson hairdryer', user: 4, category: 4, createdOn: '09-12-2017', completeBy: '11-12-2017', comment: 'It\'s coo ', checked: false}),
-        // knex('todoList').insert({name: 'Poop', category: 'movie', createdOn: '23-12-17', completeBy: '25-12-17', comment: 'POOOOOOP' }),
-        // knex('todoList').insert({name: 'Poop', category: 'movie', createdOn: '23-12-17', completeBy: '25-12-17', comment: 'POOOOOOP' }),
+        knex('todolist').insert({name: 'Narcos', user: 1, category: 1, createdOn: '06-06-2017', completeBy: '07-07-2017', comment: 'Always wanted to watch it', checked: true}),
+        knex('todolist').insert({name: 'The Daily Show', user: 2, category: 1, createdOn: '10-02-2018', completeBy: '10-03-2018', comment: 'Recommended by Austin', checked: false }),
+        knex('todolist').insert({name: 'The Rock', user: 3, category: 1, createdOn: '10-02-2018', completeBy: '10-04-2018', comment: 'Also recommended by Austin', checked: false }),
+        knex('todolist').insert({name: 'Fifiteen Dogs', user: 4, category: 2, createdOn: '10-01-2018', completeBy: '03-01-2018', comment: 'Great book everyone should read', checked: false }),
       ]);
     });
 };
