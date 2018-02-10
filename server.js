@@ -115,6 +115,15 @@ app.post("/newToDo", (data, res) => {
 });
 
 
+app.post("/checked", (data, res) => {
+
+	knex.insert(insert1).into("todolist").then(function (id) {})
+	.catch(function(error) {
+  		console.error(error.detail);
+	});
+});
+
+
 
 app.listen(PORT, () => {
   console.log("Example app listening on port " + PORT);
