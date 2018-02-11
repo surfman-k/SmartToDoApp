@@ -6,34 +6,36 @@ $(document).ready(function() {
     url: "/api/todoList"
   }).done((todolist) => {
     for(let obj of todolist) {
-      if (obj.category === 1) {
-        if(obj.checked === false ) {
-          $(".movies .list-group").prepend(renderToDoElement(obj, false));
-        } else {
-          $(".movies .done" ).prepend(renderToDoElement(obj, true));
-        }
-      }
-        if (obj.category === 2) {
+      if(obj.user == localStorage.getItem("user")){
+        if (obj.category === 1) {
           if(obj.checked === false ) {
-            $(".books .list-group").prepend(renderToDoElement(obj, false));
+            $(".movies .list-group").prepend(renderToDoElement(obj, false));
           } else {
-            $(".books .done" ).prepend(renderToDoElement(obj, true));
+            $(".movies .done" ).prepend(renderToDoElement(obj, true));
           }
         }
-
-        if (obj.category === 3) {
-          if(obj.checked === false ) {
-            $(".rest .list-group").prepend(renderToDoElement(obj, false));
-          } else {
-            $(".rest .done" ).prepend(renderToDoElement(obj, true));
+          if (obj.category === 2) {
+            if(obj.checked === false ) {
+              $(".books .list-group").prepend(renderToDoElement(obj, false));
+            } else {
+              $(".books .done" ).prepend(renderToDoElement(obj, true));
+            }
           }
-        }
 
-        if (obj.category === 4) {
-          if(obj.checked === false ) {
-            $(".product .list-group").prepend(renderToDoElement(obj, false));
-          } else {
-            $(".product .done" ).prepend(renderToDoElement(obj, true));
+          if (obj.category === 3) {
+            if(obj.checked === false ) {
+              $(".rest .list-group").prepend(renderToDoElement(obj, false));
+            } else {
+              $(".rest .done" ).prepend(renderToDoElement(obj, true));
+            }
+          }
+
+          if (obj.category === 4) {
+            if(obj.checked === false ) {
+              $(".product .list-group").prepend(renderToDoElement(obj, false));
+            } else {
+              $(".product .done" ).prepend(renderToDoElement(obj, true));
+            }
           }
         }
       }
@@ -210,7 +212,5 @@ $(document).ready(function() {
     })
     .done(location.reload());
   });
-
-
 
 });
