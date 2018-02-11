@@ -17,6 +17,7 @@ const bcrypt 	  = require('bcrypt');
 const jwt		  = require('jsonwebtoken');
 const APIClinet   = require('omdb-api-client');
 const amazon      = require('amazon-product-api');
+const GooglePlaces= require('google-places');
 
 // Seperated Routes for each Resource
 const usersRoutes = require("./routes/users");
@@ -35,6 +36,8 @@ let client = amazon.createClient({
   awsSecret: "sFmGEydq5gaQxn/U4FeT5jNwzWoYu+5oCpNS9YJU",
   awsTag: "todo04c-20"
 });
+
+var places = new GooglePlaces('AIzaSyDIcCFUTxa-qDuizJdP-AWZIXM4bRTdJOs');
 
 // Bootstrap
 app.use('/js', express.static(__dirname + '/node_modules/bootstrap/dist/js')); // redirect bootstrap JS
@@ -145,7 +148,8 @@ app.post("/newToDo", (data, res) => {
 			} 
 		}).catch(function(err){
 			console.log(err.Error);
-		})).then(client.itemSearch({Keywords: input}).then(function(results){
+		}))
+		.then(client.itemSearch({Keywords: input}).then(function(results){
 		  	if(results[0].ItemAttributes[0].ProductGroup[0] != 'Book'){
 
 		  	if(flag === 1){
@@ -178,8 +182,9 @@ app.post("/newToDo", (data, res) => {
 	// }); 
 });
 
-
-
+places.search({keyword: 'Jatoba', type: ['food'], location: [45.4961,-73.5693], radius: "5000"}, function(err, response) {
+  console.log("search: ", response.results);
+});
 
 
 app.listen(PORT, () => {
