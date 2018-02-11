@@ -116,10 +116,11 @@ app.post("/login", (data, res) => {
 app.post("/newToDo", (data, res) => {
 
 	let input = data.body.name;
+	let flag = 1;
 
 		omdb({t: input, apikey: '9d3605d5'}).list().then(function(movie) {
 			if(movie.imdbRating > 6){
-
+				flag = 5;
 				let insert1 = {name: data.body.name, user: data.body.user, category: 1, createdOn: data.body.createdOn, completeBy: data.body.completeBy, comment: data.body.comment, checked: false };
 
 				knex.insert(insert1).into("todolist").then(function (id) {})
@@ -129,39 +130,45 @@ app.post("/newToDo", (data, res) => {
 				.then(function(){});
 				res.redirect('/');
 			} 
-		}).catch(function(err) {
+		}).then(client.itemSearch({Keywords: input}).then(function(results){
+		  	if(results[0].ItemAttributes[0].ProductGroup[0] == 'Book'){
+
+		  	if(flag === 1){
+				let insert1 = {name: data.body.name, user: data.body.user, category: 2, createdOn: data.body.createdOn, completeBy: data.body.completeBy, comment: data.body.comment, checked: false };
+
+				knex.insert(insert1).into("todolist").then(function (id) {})
+				.catch(function(error) {
+			  		console.error(error.detail);
+				});
+				res.redirect('/');
+				}
+			} 
+		}).catch(function(err){
+			console.log(err.Error);
+		})).then(client.itemSearch({Keywords: input}).then(function(results){
+		  	if(results[0].ItemAttributes[0].ProductGroup[0] != 'Book'){
+
+		  	if(flag === 1){
+				let insert1 = {name: data.body.name, user: data.body.user, category: 4, createdOn: data.body.createdOn, completeBy: data.body.completeBy, comment: data.body.comment, checked: false };
+
+				knex.insert(insert1).into("todolist").then(function (id) {})
+				.catch(function(error) {
+			  		console.error(error.detail);
+				});
+				res.redirect('/');
+				} 
+			}
+
+		}).catch(function(err){
+			console.log(err.Error);
+		}))
+		.catch(function(err) {
 		    console.log(err);
 		});
 	
-		client.itemSearch({Keywords: input}).then(function(results){
-		  	if(results[0].ItemAttributes[0].ProductGroup[0] == 'Book'){
+		
 
-			let insert1 = {name: data.body.name, user: data.body.user, category: 2, createdOn: data.body.createdOn, completeBy: data.body.completeBy, comment: data.body.comment, checked: false };
-
-			knex.insert(insert1).into("todolist").then(function (id) {})
-			.catch(function(error) {
-		  		console.error(error.detail);
-			});
-			res.redirect('/');
-			} 
-		}).catch(function(err){
-			console.log(err.Error);
-		});
-
-		client.itemSearch({Keywords: input}).then(function(results){
-		  	if(results[0].ItemAttributes[0].ProductGroup[0] != 'Book'){
-
-			let insert1 = {name: data.body.name, user: data.body.user, category: 4, createdOn: data.body.createdOn, completeBy: data.body.completeBy, comment: data.body.comment, checked: false };
-
-			knex.insert(insert1).into("todolist").then(function (id) {})
-			.catch(function(error) {
-		  		console.error(error.detail);
-			});
-			res.redirect('/');
-			} 
-		}).catch(function(err){
-			console.log(err.Error);
-		});
+		
 
 	// let insert1 = {name: data.body.name, user: data.body.user, category: 1, createdOn: data.body.createdOn, completeBy: data.body.completeBy, comment: data.body.comment, checked: false };
 
