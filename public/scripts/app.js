@@ -107,6 +107,7 @@ $(document).ready(function() {
     $('html').css("background-image", "url(/image/bg3.png)");
     $('#newToDo').css('display', 'none');
     $('#logout').css('display', 'none');
+    $('#main').css('opacity', '0');
   } else {
     $('html').css("background-image", "url(/image/bg2.png)");
     $('#loginB').css('display', 'none');
