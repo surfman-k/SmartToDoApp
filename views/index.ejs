@@ -22,6 +22,7 @@
 
     <!-- scripts -->
     <script type="text/javascript" src="/vendor/jquery-3.0.0.js"></script>
+    <script type="text/javascript" src="/scripts/popper.min.js"></script>
     <script type="text/javascript" src="/scripts/app.js"></script>
     <script type="text/javascript" src="/scripts/moment.min.js"></script>
     <script src="/js/jquery.min.js"></script>
@@ -221,6 +222,16 @@
       <div id="id04" class="myModal">
         <form class="editToDo" method="post">
           <h2>Edit your todo</h2><br>
+           <div class="dropdown">
+            <button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown">Did we get it wrong?
+            <span class="caret"></span></button>
+            <ul class="dropdown-menu">
+              <li><a href="#" class="listId1">Movies / TV Shows</a></li>
+              <li><a href="#" class="listId2">Books</a></li>
+              <li><a href="#" class="listId3">Resturaunt</a></li>
+              <li><a href="#" class="listId4">Products</a></li>
+            </ul>
+          </div>
           <div>
             <h4>Need more time? Want to apply the pressure?:</h4>
               <p>Date: <input type="text" id="datepicker"></p>

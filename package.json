@@ -28,7 +28,8 @@
     "morgan": "^1.7.0",
     "node-sass-middleware": "^0.9.8",
     "pg": "^6.0.2",
-    "pg-calendar": "^1.4.27"
+    "pg-calendar": "^1.4.27",
+    "popper.js": "^1.12.9"
   },
   "devDependencies": {
     "nodemon": "^1.14.12",
