@@ -89,6 +89,18 @@ $(document).ready(function() {
       return $doneContainer;
     }
 
+    // Edit buttons
+      // let $editButton = $("<button>").attr({
+      // type: 'submit',
+      // class: 'btn btn-default btn-sm'})
+      // .text("update")
+      // .addClass('Testing');
+
+      // let $testDiv = $("<div>").addClass('testingDiv')
+
+      // $testDiv.append($editButton).hide();
+      // $toDoMain.append($testDiv);
+
     return $toDoMain;
   }
 
@@ -122,17 +134,42 @@ $(document).ready(function() {
     // $("#id04").css('display', 'block')
   });
 
-
-
   $(document).on("click", ".list-group-item", function(event) {
     event.preventDefault();
-    if ($(this).height() !== 250) {
-          $(this).animate({ height: 250 }, 1000 );
-        }
-    else {
-          $( this ).animate({ height: 124.5 }, 1000 );
-        }
-});
+    console.log("BOO!");
+    $("#id04").css('display', 'block')
+  });
+
+
+  // Edit comment
+
+  // $("p .mb-1").on("click", function() {
+  //     let $this = $(this);
+  //     let $input = $('<input>', {
+  //         value: $this.text(),
+  //         type: 'text',
+  //         blur: function() {
+  //            $this.text(this.value);
+  //         },
+  //         keyup: function(e) {
+  //            if (e.which === 13) $input.blur();
+  //         }
+  //     }).appendTo($this.empty()).focus();
+  // });
+
+
+  // //Expand element
+  // $(document).on("click", ".list-group-item", function(event) {
+
+  //   if ($(this).height() !== 250) {
+  //         $(this).animate({ height: 250 }, 1000 );
+  //         $('.TestingDiv').show();
+  //   event.preventDefault();
+  //       }
+  //   else {
+  //         $( this ).animate({ height: 124.5 }, 1000 );
+  //       }
+  // });
 
   // $("#regB").on("click", function(event) {
   //   event.preventDefault();
