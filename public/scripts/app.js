@@ -143,6 +143,21 @@ $(document).ready(function() {
 
   // });
 
+  //Navbar
+
+  let open = false;
+        $('#footerSlideButton').click(function () {
+            if(open === false) {
+                $('.navbar-fixed-bottom').animate({ height: '200px' });
+                $(this).css('backgroundPosition', 'bottom left');
+                open = true;
+            } else {
+                $('.navbar-fixed-bottom').animate({ height: '0px' });
+                $(this).css('backgroundPosition', 'top left');
+                open = false;
+            }
+        });
+
 
   //AJAX for login form
   $('.loginForm').submit(function(event) {
