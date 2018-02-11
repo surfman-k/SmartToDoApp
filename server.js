@@ -13,8 +13,10 @@ const knexConfig  = require("./knexfile");
 const knex        = require("knex")(knexConfig[ENV]);
 const morgan      = require('morgan');
 const knexLogger  = require('knex-logger');
-const bcrypt 	    = require('bcrypt');
-const jwt		      = require('jsonwebtoken');
+const bcrypt 	  = require('bcrypt');
+const jwt		  = require('jsonwebtoken');
+const APIClinet   = require('omdb-api-client');
+const amazon      = require('amazon-product-api');
 
 // Seperated Routes for each Resource
 const usersRoutes = require("./routes/users");
@@ -26,6 +28,13 @@ const categoryRoutes = require("./routes/category");
 //         The :status token will be colored red for server error codes, yellow for client error codes, cyan for redirection codes, and uncolored for all other codes.
 app.use(morgan('dev'));
 
+let omdb = new APIClinet();
+
+let client = amazon.createClient({
+  awsId: "AKIAICVID7KBNU5RHQJA",
+  awsSecret: "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",
+  awsTag: "todo04c-20"
+});
 
 // Bootstrap
 app.use('/js', express.static(__dirname + '/node_modules/bootstrap/dist/js')); // redirect bootstrap JS
@@ -106,13 +115,48 @@ app.post("/login", (data, res) => {
 //Creating a new ToDo
 app.post("/newToDo", (data, res) => {
 
-	let insert1 = {name: data.body.name, user: data.body.user, category: data.body.category, createdOn: data.body.createdOn, completeBy: data.body.completeBy, comment: data.body.comment, checked: false };
+	let input = data.body.name;
 
-	knex.insert(insert1).into("todolist").then(function (id) {})
-	.catch(function(error) {
-  		console.error(error.detail);
-	}); res.redirect("/");
+		omdb({t: input, apikey: '9d3605d5'}).list().then(function(movie) {
+			if(movie.imdbRating > 6){
+
+				let insert1 = {name: data.body.name, user: data.body.user, category: 1, createdOn: data.body.createdOn, completeBy: data.body.completeBy, comment: data.body.comment, checked: false };
+
+				knex.insert(insert1).into("todolist").then(function (id) {})
+				.catch(function(error) {
+			  		console.error(error.detail);
+				})
+				.then(function(){});
+				res.redirect('/');
+			} 
+		}).catch(function(err) {
+		    console.log(err);
+		});
+	
+		client.itemSearch({Keywords: input}).then(function(results){
+		  	if(results[0].ItemAttributes[0].ProductGroup[0] == 'Book'){
+
+			let insert1 = {name: data.body.name, user: data.body.user, category: 2, createdOn: data.body.createdOn, completeBy: data.body.completeBy, comment: data.body.comment, checked: false };
+
+			knex.insert(insert1).into("todolist").then(function (id) {})
+			.catch(function(error) {
+		  		console.error(error.detail);
+			});
+			res.redirect('/');
+			} 
+		}).catch(function(err){
+			console.log(err.Error);
+		});
+
+	// let insert1 = {name: data.body.name, user: data.body.user, category: 1, createdOn: data.body.createdOn, completeBy: data.body.completeBy, comment: data.body.comment, checked: false };
+
+	// knex.insert(insert1).into("todolist").then(function (id) {})
+	// .catch(function(error) {
+ //  		console.error(error.detail);
+	// }); 
 });
+
+
 
 
 

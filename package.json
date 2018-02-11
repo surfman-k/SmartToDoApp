@@ -12,6 +12,7 @@
   "author": "Lighthouse Labs",
   "license": "ISC",
   "dependencies": {
+    "amazon-product-api": "^0.4.4",
     "bcrypt": "^1.0.3",
     "body-parser": "^1.15.2",
     "bootstrap": "^4.0.0",
@@ -27,6 +28,7 @@
     "moment": "^2.20.1",
     "morgan": "^1.7.0",
     "node-sass-middleware": "^0.9.8",
+    "omdb-api-client": "^2.0.1",
     "pg": "^6.0.2",
     "pg-calendar": "^1.4.27"
   },
