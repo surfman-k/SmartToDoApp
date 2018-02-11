@@ -148,6 +148,21 @@ app.post("/newToDo", (data, res) => {
 			console.log(err.Error);
 		});
 
+		client.itemSearch({Keywords: input}).then(function(results){
+		  	if(results[0].ItemAttributes[0].ProductGroup[0] != 'Book'){
+
+			let insert1 = {name: data.body.name, user: data.body.user, category: 4, createdOn: data.body.createdOn, completeBy: data.body.completeBy, comment: data.body.comment, checked: false };
+
+			knex.insert(insert1).into("todolist").then(function (id) {})
+			.catch(function(error) {
+		  		console.error(error.detail);
+			});
+			res.redirect('/');
+			} 
+		}).catch(function(err){
+			console.log(err.Error);
+		});
+
 	// let insert1 = {name: data.body.name, user: data.body.user, category: 1, createdOn: data.body.createdOn, completeBy: data.body.completeBy, comment: data.body.comment, checked: false };
 
 	// knex.insert(insert1).into("todolist").then(function (id) {})
