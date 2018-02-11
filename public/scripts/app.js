@@ -142,8 +142,8 @@ $(document).ready(function() {
 
 
   //AJAX for login form
-  $('.loginForm').submit(function(e) {
-    e.preventDefault();
+  $('.loginForm').submit(function(event) {
+    event.preventDefault();
     let uname = ($('#username').val());
     let psw = ($('#inputPassword3').val());
 
@@ -164,8 +164,8 @@ $(document).ready(function() {
   });
 
   //AJAX for registration form
-   $('.regForm').submit(function(e) {
-    e.preventDefault();
+   $('.regForm').submit(function(event) {
+    event.preventDefault();
     let uname = ($('#reguname').val());
     let psw = ($('#passwordReg').val());
 
@@ -186,16 +186,16 @@ $(document).ready(function() {
   });
 
   //AJAX for logout button
-   $('#logout').click(function(e) {
-    e.preventDefault();
+   $('#logout').click(function(event) {
+    event.preventDefault();
     localStorage.removeItem("user");
     location.reload();
   });
 
 
   // AJAX for adding a ToDo Item
-   $('.toDoForm').submit(function(e) {
-    e.preventDefault();
+   $('.toDoForm').submit(function(event) {
+    event.preventDefault();
     let tdname = ($('#tdname').val());
     let todoUser = localStorage.getItem("user");
     let today = new Date();
@@ -204,7 +204,7 @@ $(document).ready(function() {
     $.ajax({
     type: "POST",
     url: "/newToDo",
-    async: true,
+    async: false,
     data: {name: tdname, user: todoUser, category: 3, createdOn: dateCreated, completeBy: dateCreated, comment: "", checked: false}
     })
     .done(location.reload());

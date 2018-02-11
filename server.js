@@ -13,8 +13,8 @@ const knexConfig  = require("./knexfile");
 const knex        = require("knex")(knexConfig[ENV]);
 const morgan      = require('morgan');
 const knexLogger  = require('knex-logger');
-const bcrypt 	  = require('bcrypt');
-const jwt		  = require('jsonwebtoken');
+const bcrypt 	    = require('bcrypt');
+const jwt		      = require('jsonwebtoken');
 
 // Seperated Routes for each Resource
 const usersRoutes = require("./routes/users");
@@ -111,7 +111,7 @@ app.post("/newToDo", (data, res) => {
 	knex.insert(insert1).into("todolist").then(function (id) {})
 	.catch(function(error) {
   		console.error(error.detail);
-	});
+	}); res.redirect("/");
 });
 
 
