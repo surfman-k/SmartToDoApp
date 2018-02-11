@@ -200,12 +200,13 @@ $(document).ready(function() {
     let todoUser = localStorage.getItem("user");
     let today = new Date();
     let dateCreated = (`${today.getFullYear()}-${today.getMonth()+1}-${today.getDate()}`);
+    let commentInput = $("#commentInput").val();
 
     $.ajax({
     type: "POST",
     url: "/newToDo",
     async: false,
-    data: {name: tdname, user: todoUser, category: 3, createdOn: dateCreated, completeBy: dateCreated, comment: "", checked: false}
+    data: {name: tdname, user: todoUser, category: 3, createdOn: dateCreated, completeBy: dateCreated, comment: commentInput, checked: false}
     })
     .done(location.reload());
   });
