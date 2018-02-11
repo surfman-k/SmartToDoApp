@@ -119,7 +119,20 @@ $(document).ready(function() {
     event.preventDefault();
     $("#id01").css('display', 'none');
     $("#id03").css('display', 'block');
+    // $("#id04").css('display', 'block')
   });
+
+
+
+  $(document).on("click", ".list-group-item", function(event) {
+    event.preventDefault();
+    if ($(this).height() !== 250) {
+          $(this).animate({ height: 250 }, 1000 );
+        }
+    else {
+          $( this ).animate({ height: 124.5 }, 1000 );
+        }
+});
 
   // $("#regB").on("click", function(event) {
   //   event.preventDefault();
@@ -142,21 +155,6 @@ $(document).ready(function() {
   //     }
 
   // });
-
-  //Navbar
-
-  let open = false;
-        $('#footerSlideButton').click(function () {
-            if(open === false) {
-                $('.navbar-fixed-bottom').animate({ height: '200px' });
-                $(this).css('backgroundPosition', 'bottom left');
-                open = true;
-            } else {
-                $('.navbar-fixed-bottom').animate({ height: '0px' });
-                $(this).css('backgroundPosition', 'top left');
-                open = false;
-            }
-        });
 
 
   //AJAX for login form
