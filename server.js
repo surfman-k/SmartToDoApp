@@ -17,7 +17,8 @@ const bcrypt 	  = require('bcrypt');
 const jwt		  = require('jsonwebtoken');
 const APIClinet   = require('omdb-api-client');
 const amazon      = require('amazon-product-api');
-const GooglePlaces= require('google-places');
+
+const GooglePlacesPromises = require('googleplaces-promises');
 
 // Seperated Routes for each Resource
 const usersRoutes = require("./routes/users");
@@ -32,12 +33,13 @@ app.use(morgan('dev'));
 let omdb = new APIClinet();
 
 let client = amazon.createClient({
-  awsId: "AKIAICVID7KBNU5RHQJA",
-  awsSecret: "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",
+  awsId: process.env.awsId,
+  awsSecret: process.env.awsSecret,
   awsTag: "todo04c-20"
 });
 
-var places = new GooglePlaces('AIzaSyDIcCFUTxa-qDuizJdP-AWZIXM4bRTdJOs');
+let placesPromises = new GooglePlacesPromises(process.env.googleAPIkey);
+
 
 // Bootstrap
 app.use('/js', express.static(__dirname + '/node_modules/bootstrap/dist/js')); // redirect bootstrap JS
@@ -121,7 +123,7 @@ app.post("/newToDo", (data, res) => {
 	let input = data.body.name;
 	let flag = 1;
 
-		omdb({t: input, apikey: '9d3605d5'}).list().then(function(movie) {
+		omdb({t: input, apikey: process.env.omdbAPI}).list().then(function(movie) {
 			if(movie.imdbRating > 6){
 				flag = 5;
 				let insert1 = {name: data.body.name, user: data.body.user, category: 1, createdOn: data.body.createdOn, completeBy: data.body.completeBy, comment: data.body.comment, checked: false };
@@ -148,8 +150,7 @@ app.post("/newToDo", (data, res) => {
 			} 
 		}).catch(function(err){
 			console.log(err.Error);
-		}))
-		.then(client.itemSearch({Keywords: input}).then(function(results){
+		})).then(client.itemSearch({Keywords: input}).then(function(results){
 		  	if(results[0].ItemAttributes[0].ProductGroup[0] != 'Book'){
 
 		  	if(flag === 1){
@@ -162,30 +163,22 @@ app.post("/newToDo", (data, res) => {
 				res.redirect('/');
 				} 
 			}
-
-		}).catch(function(err){
-			console.log(err.Error);
+			}).catch(function(err){
+				console.log(err.Error);
 		}))
 		.catch(function(err) {
 		    console.log(err);
 		});
 	
-		
-
-		
-
-	// let insert1 = {name: data.body.name, user: data.body.user, category: 1, createdOn: data.body.createdOn, completeBy: data.body.completeBy, comment: data.body.comment, checked: false };
-
-	// knex.insert(insert1).into("todolist").then(function (id) {})
-	// .catch(function(error) {
- //  		console.error(error.detail);
-	// }); 
 });
 
-places.search({keyword: 'Jatoba', type: ['food'], location: [45.4961,-73.5693], radius: "5000"}, function(err, response) {
-  console.log("search: ", response.results);
-});
-
+placesPromises.placeSearch({keyword: 'Jatoba', type: ['food'], location: [45.4961,-73.5693], radius: "5000"})
+ .then(function(response){
+        console.log(response.results.length);
+    })
+    .fail(function(error){
+        console.log(error)
+    });
 
 app.listen(PORT, () => {
   console.log("Example app listening on port " + PORT);
