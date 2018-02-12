@@ -258,7 +258,7 @@ $(document).ready(function() {
     type: "POST",
     url: "/newToDo",
     async: false,
-    data: {name: tdname, user: todoUser, category: 3, createdOn: dateCreated, completeBy: toDoBy, comment: commentInput, checked: false}
+    data: {name: tdname, user: todoUser, category: 3, createdOn: dateCreated, completeBy: dateCreated, comment: commentInput, checked: false}
     })
     .done(location.reload());
   });

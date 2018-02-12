@@ -12,6 +12,7 @@
   "author": "Lighthouse Labs",
   "license": "ISC",
   "dependencies": {
+    "amazon-product-api": "^0.4.4",
     "bcrypt": "^1.0.3",
     "body-parser": "^1.15.2",
     "bootstrap": "^4.0.0",
@@ -19,6 +20,7 @@
     "ejs": "^2.4.1",
     "express": "^4.13.4",
     "flash-message": "^2.0.1",
+    "googleplaces-promises": "^1.0.0",
     "jquery": "^3.3.1",
     "jquery-ui": "^1.12.1",
     "jsonwebtoken": "^8.1.1",
@@ -27,6 +29,7 @@
     "moment": "^2.20.1",
     "morgan": "^1.7.0",
     "node-sass-middleware": "^0.9.8",
+    "omdb-api-client": "^2.0.1",
     "pg": "^6.0.2",
     "pg-calendar": "^1.4.27",
     "popper.js": "^1.12.9"
