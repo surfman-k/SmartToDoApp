@@ -89,7 +89,7 @@ app.post("/reg", (data, res) => {
 		});
 	})
 	.catch(function(error) {
-  		console.error(error);
+  		res.status(201).send("USERNAME EXISTS!!!");
 	});
 
 });
