@@ -54,7 +54,7 @@ $(document).ready(function() {
 
     $mainContainer.append($toDoTitle);
 
-    let $toDoBy = $("<small>").text(data.completeBy);
+    let $toDoBy = $("<small>").text(data.completeBy.substring(10, -1));
 
     $mainContainer.append($toDoBy);
 
@@ -72,7 +72,7 @@ $(document).ready(function() {
 
     $toDoMain.append($comment);
 
-    let $creationDate = $("<small>").text(data.createdOn);
+    let $creationDate = $("<small>").text(data.createdOn.substring(10, -1));
 
     $toDoMain.append($creationDate);
 
@@ -252,12 +252,13 @@ $(document).ready(function() {
     let today = new Date();
     let dateCreated = (`${today.getFullYear()}-${today.getMonth()+1}-${today.getDate()}`);
     let commentInput = $("#commentInput").val();
+    let toDoBy = ($('#date').val())
 
     $.ajax({
     type: "POST",
     url: "/newToDo",
     async: false,
-    data: {name: tdname, user: todoUser, category: 3, createdOn: dateCreated, completeBy: dateCreated, comment: commentInput, checked: false}
+    data: {name: tdname, user: todoUser, category: 3, createdOn: dateCreated, completeBy: toDoBy, comment: commentInput, checked: false}
     })
     .done(location.reload());
   });
