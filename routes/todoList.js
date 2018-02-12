@@ -9,6 +9,7 @@ module.exports = (knex) => {
     knex
       .select("*")
       .from("todolist")
+      .orderBy("id", "ASC")
       .then((results) => {
         res.json(results);
     });
