@@ -114,6 +114,15 @@ app.post("/newToDo", (data, res) => {
 	}); res.redirect("/");
 });
 
+app.post("/editToDo", (data, res) => {
+  let changes = {id: data.body.id, category: data.body.category, completeBy: data.body.completeBy, comment: data.body.comment};
+  knex("todolist").where("id", data.body.id)
+    .update(changes)
+    .then(function (error) {
+        console.log(data.body.completeBy);
+      console.error(error.detail);
+    }); res.redirect("/");
+});
 
 
 app.listen(PORT, () => {

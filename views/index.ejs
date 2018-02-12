@@ -28,7 +28,7 @@
     <script src="/js/jquery.min.js"></script>
     <script src="/js/bootstrap.min.js"></script>
     <script type="text/javascript" src="/scripts/jquery.flash.js"></script>
-    <script type="text/javascript" src="/vendor/jquery-ui-1.12.1/jquery-ui.js"></script>
+<!--     <script type="text/javascript" src="/vendor/jquery-ui-1.12.1/jquery-ui.js"></script> -->
   </head>
 
   <body>
@@ -206,7 +206,7 @@
           </div>
           <div>
             <h4>Complete To-Do By:</h4>
-              <p>Date: <input type="text" id="datepicker"></p>
+              <p>Date: <input type="text" id="date" placeholder="dd/mm/yyyy"></p>
           </div>
           <div>
             <h4>Note:</h4>
@@ -225,20 +225,20 @@
            <div class="dropdown">
             <button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown">Did we get it wrong?
             <span class="caret"></span></button>
-            <ul class="dropdown-menu">
-              <li><a href="#" class="listId1">Movies / TV Shows</a></li>
-              <li><a href="#" class="listId2">Books</a></li>
-              <li><a href="#" class="listId3">Resturaunt</a></li>
-              <li><a href="#" class="listId4">Products</a></li>
+            <ul id="categoryChanger" class="dropdown-menu">
+              <li><a href="#" class="listId1" value="1">Movies / TV Shows</a></li>
+              <li><a href="#" class="listId2" value="2">Books</a></li>
+              <li><a href="#" class="listId3" value="3">Resturaunt</a></li>
+              <li><a href="#" class="listId4" value="4">Products</a></li>
             </ul>
           </div>
           <div>
             <h4>Need more time? Want to apply the pressure?:</h4>
-              <p>Date: <input type="text" id="datepicker"></p>
+              <p>Date: <input type="text" id="dateEdit" placeholder="yyyy/mm/dd"></p>
           </div>
           <div>
             <h4>Edit your note:</h4>
-            <input id="commentInput" type="text" name="comment" placeholder="Leave yourself a note :)">
+            <input id="commentEdit" type="text" name="comment" placeholder="Leave yourself a note :)">
           </div>
           <div>
             <button class="submitBtn" type="submit">Submit</button>

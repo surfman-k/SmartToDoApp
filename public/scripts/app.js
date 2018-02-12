@@ -111,10 +111,6 @@ $(document).ready(function() {
 
   });
 
-  $("#datepicker").datepicker();
-
-
-
   if (!localStorage.user) {
     $('html').css("background-image", "url(/image/bg3.png)");
     $('#newToDo').css('display', 'none');
@@ -134,9 +130,11 @@ $(document).ready(function() {
     // $("#id04").css('display', 'block')
   });
 
+  let uniqueElemId;
+
   $(document).on("click", ".list-group-item", function(event) {
     event.preventDefault();
-    console.log("BOO!");
+    uniqueElemId= $(this).attr('ident');
     $("#id04").css('display', 'block')
   });
 
@@ -264,7 +262,25 @@ $(document).ready(function() {
     .done(location.reload());
   });
 
-   //
+   let editCategory;
+   $('#categoryChanger a').on('click', function(event){
+     event.preventDefault();
+     editCategory = $(this).attr('value');
+    });
 
+  // AJAX for Edit Form
+  $(".editToDo").submit(function(event) {
+    event.preventDefault();
+    let commentEdit = ($('#commentEdit').val());
+    let date = ($('#dateEdit').val());
+
+    $.ajax({
+    type: "POST",
+    url: "/editToDo",
+    async: false,
+    data: {id: uniqueElemId, category: editCategory, completeBy: date, comment: commentEdit}
+    })
+    .done(location.reload());
+  });
 
 });
