@@ -205,7 +205,7 @@ $(document).ready(function() {
         localStorage.setItem('user', data.id);
         location.reload();
       } else {
-        alert("Verify your credentials!");
+        $.flash("Verify your credentials!");
       }
     });
   });
@@ -227,7 +227,7 @@ $(document).ready(function() {
         localStorage.setItem("user", data[0]);
         location.reload();
       } else {
-        alert('Username already exists!');
+        $.flash('Username already exists!');
       }
     });
   });
