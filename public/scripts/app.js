@@ -54,15 +54,25 @@ $(document).ready(function() {
 
     $mainContainer.append($toDoTitle);
 
-    let $checkButton = $("<div>").addClass("btn-group").attr("data-toggle", "buttons");
-    let $labelButton = $("<label>").addClass("btn btn-success active");
-    let $inputButton = $("<input>").attr("type", "checkbox").attr("autocomplete", "off");
-    let $buttonSpan = $("<span>").addClass("glyphicon glyphicon-ok");
+   
 
-    $mainContainer.append($checkButton);
-    $checkButton.append($labelButton);
-    $labelButton.append($inputButton);
-    $labelButton.append($buttonSpan);
+    if(data.checked){
+      let $checkButton = $("<div>").addClass("form-check");
+      let $labelButton = $("<input>").addClass("form-check-input").attr('checked', true).attr('type', 'checkbox').attr('value', '').attr('id', 'defaultCheck1');
+      let $inputButton = $("<input>").addClass("form-check-label").attr("for", "defaultCheck1");
+
+      $mainContainer.append($checkButton);
+      $checkButton.append($labelButton);
+      $labelButton.append($inputButton);
+    } else {
+      let $checkButton = $("<div>").addClass("form-check");
+      let $labelButton = $("<input>").addClass("form-check-input").attr('type', 'checkbox').attr('value', '').attr('id', 'defaultCheck1');
+      let $inputButton = $("<input>").addClass("form-check-label").attr("for", "defaultCheck1");
+
+      $mainContainer.append($checkButton);
+      $checkButton.append($labelButton);
+      $labelButton.append($inputButton);
+    }
 
     let $comment = $("<p>").addClass("mb-1").text(data.comment);
 
@@ -131,7 +141,7 @@ $(document).ready(function() {
   $(document).on("click", ".list-group-item", function(event) {
     event.preventDefault();
     uniqueElemId= $(this).attr('ident');
-    $("#id04").css('display', 'block')
+    $("#id04").css('display', 'block');
   });
 
 
@@ -279,3 +289,23 @@ $(document).ready(function() {
   });
 
 });
+
+  //AJAX for Checking DONE Todo
+  $(document).on("click", ".form-check-input", function(event) {
+    console.log($(this).is(":checked"));
+    event.preventDefault();
+    uniqueElemId= $(this).parents('.list-group-item').attr('ident');
+    //$(this).attr('checked', true);
+    
+    $.ajax({
+    type: "POST",
+    url: "/checked",
+    async: false,
+    //data: {id: uniqueElemId, checked: false}
+    data: ($(".form-check-input").attr('checked', false)) ? {id: uniqueElemId, checked: true} : {id: uniqueElemId, checked: false}
+    })
+    .done(location.reload());    
+
+  });
+
+

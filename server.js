@@ -122,11 +122,21 @@ app.post("/editToDo", (data, res) => {
   let changes = {id: data.body.id, category: data.body.category, comment: data.body.comment};
   knex("todolist").where("id", data.body.id)
     .update(changes)
-    .then(function (error) {
+    .catch(function (error) {
       console.error(error);
     }); res.redirect("/");
 });
 
+
+//Checking a ToDo
+app.post("/checked", (data, res) => {
+  let changes = {checked: data.body.checked};
+  knex("todolist").where("id", data.body.id)
+    .update(changes)
+    .catch(function (error) {
+      console.error(error);
+    }); res.redirect("/");
+});
 
 //Creating a new ToDo
 app.post("/newToDo", (data, res) => {
