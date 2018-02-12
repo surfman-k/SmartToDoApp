@@ -54,16 +54,6 @@ $(document).ready(function() {
 
     $mainContainer.append($toDoTitle);
 
-    let $checkButton = $("<div>").addClass("btn-group").attr("data-toggle", "buttons");
-    let $labelButton = $("<label>").addClass("btn btn-success active");
-    let $inputButton = $("<input>").attr("type", "checkbox").attr("autocomplete", "off");
-    let $buttonSpan = $("<span>").addClass("glyphicon glyphicon-ok");
-
-    $mainContainer.append($checkButton);
-    $checkButton.append($labelButton);
-    $labelButton.append($inputButton);
-    $labelButton.append($buttonSpan);
-
     let $comment = $("<p>").addClass("mb-1").text(data.comment);
 
     $toDoMain.append($comment);

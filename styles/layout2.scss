@@ -34,6 +34,8 @@ nav {
   .container-fluid {
     overflow-y: auto;
     .col {
+      width: 25%;
+      word-wrap: break-word;
       background-color: #F4F4F4;
       margin: 20px;
       padding: 5px;
