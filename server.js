@@ -138,7 +138,7 @@ app.post("/newToDo", (data, res) => {
 				} 
 
         		}
-    		}).then(
+    		}).then( function () {
 		omdb({t: input, apikey: process.env.omdbAPI}).list().then(function(movie) {
 			if(movie.imdbRating > 6){
 				flag = 5;
@@ -151,7 +151,8 @@ app.post("/newToDo", (data, res) => {
 				.then(function(){});
 				res.redirect('/');
 			}
-		})).then(
+		})
+		}).then( function () {
     	client.itemSearch({Keywords: input}).then(function(results){
 		  	if(results[0].ItemAttributes[0].ProductGroup[0] == 'Book'){
 
@@ -166,7 +167,8 @@ app.post("/newToDo", (data, res) => {
 				res.redirect('/');
 				}
 			} 
-		})).then( function(){
+		})
+		}).then( function(){
 		client.itemSearch({Keywords: input}).then(function(results){
 		  	if(results[0].ItemAttributes[0].ProductGroup[0] != 'Book'){
 
