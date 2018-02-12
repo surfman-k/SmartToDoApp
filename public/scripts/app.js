@@ -265,7 +265,7 @@ $(document).ready(function() {
     });
 
   // AJAX for Edit Form
-  $(".editToDo").submit(function(event) {
+  $("#editSubmit").on("click", function(event) {
     event.preventDefault();
     let commentEdit = ($('#commentEdit').val());
 
@@ -274,6 +274,19 @@ $(document).ready(function() {
     url: "/editToDo",
     async: false,
     data: {id: uniqueElemId, category: editCategory, comment: commentEdit}
+    })
+    .done(location.reload());
+  });
+
+  // AJAX for Delete
+  $("#deleteElem").on("click", function(event) {
+    event.preventDefault();
+
+    $.ajax({
+    type: "POST",
+    url: "/delete",
+    async: false,
+    data: {id: uniqueElemId}
     })
     .done(location.reload());
   });

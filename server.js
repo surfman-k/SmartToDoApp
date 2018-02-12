@@ -137,7 +137,7 @@ app.post("/newToDo", (data, res) => {
 
 		placesPromises.placeSearch({keyword: input, type: ['food'], location: [45.4961,-73.5693], radius: "5000"}).then(function(response){
         	if(response.results.length > 0){
-        			
+
         	if(flag === 1){
 				let insert1 = {name: data.body.name, user: data.body.user, category: 3, createdOn: data.body.createdOn, comment: data.body.comment, checked: false };
 				flag = 5;
@@ -146,7 +146,7 @@ app.post("/newToDo", (data, res) => {
 			  		console.error(error.detail);
 				}).then(function(){});
 				res.redirect('/');
-				} 
+				}
 
         		}
     		}).then( function () {
@@ -177,7 +177,7 @@ app.post("/newToDo", (data, res) => {
 				.then(function(){});
 				res.redirect('/');
 				}
-			} 
+			}
 		})
 		}).then( function(){
 		client.itemSearch({Keywords: input}).then(function(results){
@@ -192,7 +192,7 @@ app.post("/newToDo", (data, res) => {
 				})
 				.then(function(){});
 				res.redirect('/');
-				} 
+				}
 			}
 			}).catch(function(err){
 				console.log(err.Error);
@@ -200,7 +200,17 @@ app.post("/newToDo", (data, res) => {
 		.catch(function(err) {
 		    console.log(err);
 		});
-	
+
+});
+
+//Deleting a todo
+app.post("/delete", (data, res) => {
+  let deletionId = {id: data.body.id};
+  knex("todolist").where("id", data.body.id)
+    .del()
+    .then(function (error) {
+      console.error(error);
+    }); res.redirect("/");
 });
 
 

@@ -98,23 +98,47 @@ input[type=text], input[type=password] {
     padding: 14px 20px;
     margin: 8px 0;
     width: 100%;
+  .submitBtn:hover {
+      opacity: 0.9;
+  }
+  .submitBtn:active {
+    transform: translateY(4px);
+  }
+
 }
 
-.submitBtn:hover {
-    opacity: 0.9;
+.deleteBtn {
+    background-color: #D13838;
+    color: white;
+    padding: 14px 20px;
+    margin: 8px 0;
+    width: 100%;
+
+  .deleteBtn:hover {
+      opacity: 0.9;
+  }
+  .deleteBtn:active {
+    transform: translateY(4px);
+  }
+
 }
 
-.submitBtn:active {
-  transform: translateY(4px);
+
+.cancelBtn {
+    background-color: #4760B6;
+    color: white;
+    padding: 14px 20px;
+    margin: 8px 0;
+    width: 100%;
+
+  .cancelB:hover {
+      opacity: 0.9;
+  }
+ .cancelB:active {
+    transform: translateY(4px);
+  }
 }
 
-.cancelB:hover {
-    opacity: 0.9;
-}
-
-.cancelB:active {
-  transform: translateY(4px);
-}
 
 .logincontainer {
   padding: 16px;
