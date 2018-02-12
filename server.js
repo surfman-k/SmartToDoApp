@@ -75,7 +75,7 @@ app.post("/reg", (data, res) => {
 		});
 	})
 	.catch(function(error) {
-  		console.error(error.detail);
+  		console.error(error);
 	});
 
 });
@@ -99,7 +99,7 @@ app.post("/login", (data, res) => {
 		}
 	})
 	.catch(function(error) {
-  		console.error(error.detail);
+  		console.error(error);
 	});
 });
 
@@ -110,7 +110,7 @@ app.post("/newToDo", (data, res) => {
 
 	knex.insert(insert1).into("todolist").then(function (id) {})
 	.catch(function(error) {
-  		console.error(error.detail);
+  		console.error(error);
 	}); res.redirect("/");
 });
 
@@ -119,8 +119,7 @@ app.post("/editToDo", (data, res) => {
   knex("todolist").where("id", data.body.id)
     .update(changes)
     .then(function (error) {
-        console.log(data.body.completeBy);
-      console.error(error.detail);
+      console.error(error);
     }); res.redirect("/");
 });
 
