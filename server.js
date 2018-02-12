@@ -119,7 +119,7 @@ app.post("/login", (data, res) => {
 
 //Editing a ToDo
 app.post("/editToDo", (data, res) => {
-  let changes = {id: data.body.id, category: data.body.category, completeBy: data.body.completeBy, comment: data.body.comment};
+  let changes = {id: data.body.id, category: data.body.category, comment: data.body.comment};
   knex("todolist").where("id", data.body.id)
     .update(changes)
     .then(function (error) {
@@ -139,7 +139,7 @@ app.post("/newToDo", (data, res) => {
         	if(response.results.length > 0){
         			
         	if(flag === 1){
-				let insert1 = {name: data.body.name, user: data.body.user, category: 3, createdOn: data.body.createdOn, completeBy: data.body.completeBy, comment: data.body.comment, checked: false };
+				let insert1 = {name: data.body.name, user: data.body.user, category: 3, createdOn: data.body.createdOn, comment: data.body.comment, checked: false };
 				flag = 5;
 				knex.insert(insert1).into("todolist").then(function (id) {})
 				.catch(function(error) {
@@ -153,7 +153,7 @@ app.post("/newToDo", (data, res) => {
 		omdb({t: input, apikey: process.env.omdbAPI}).list().then(function(movie) {
 			if(movie.imdbRating > 6){
 				flag = 5;
-				let insert1 = {name: data.body.name, user: data.body.user, category: 1, createdOn: data.body.createdOn, completeBy: data.body.completeBy, comment: data.body.comment, checked: false };
+				let insert1 = {name: data.body.name, user: data.body.user, category: 1, createdOn: data.body.createdOn, comment: data.body.comment, checked: false };
 
 				knex.insert(insert1).into("todolist").then(function (id) {})
 				.catch(function(error) {
@@ -168,7 +168,7 @@ app.post("/newToDo", (data, res) => {
 		  	if(results[0].ItemAttributes[0].ProductGroup[0] == 'Book'){
 
 		  	if(flag === 1){
-				let insert1 = {name: data.body.name, user: data.body.user, category: 2, createdOn: data.body.createdOn, completeBy: data.body.completeBy, comment: data.body.comment, checked: false };
+				let insert1 = {name: data.body.name, user: data.body.user, category: 2, createdOn: data.body.createdOn, comment: data.body.comment, checked: false };
 				flag = 5;
 				knex.insert(insert1).into("todolist").then(function (id) {})
 				.catch(function(error) {
@@ -184,7 +184,7 @@ app.post("/newToDo", (data, res) => {
 		  	if(results[0].ItemAttributes[0].ProductGroup[0] != 'Book'){
 
 		  	if(flag === 1){
-				let insert1 = {name: data.body.name, user: data.body.user, category: 4, createdOn: data.body.createdOn, completeBy: data.body.completeBy, comment: data.body.comment, checked: false };
+				let insert1 = {name: data.body.name, user: data.body.user, category: 4, createdOn: data.body.createdOn, comment: data.body.comment, checked: false };
 
 				knex.insert(insert1).into("todolist").then(function (id) {})
 				.catch(function(error) {

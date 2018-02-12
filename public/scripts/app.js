@@ -54,10 +54,6 @@ $(document).ready(function() {
 
     $mainContainer.append($toDoTitle);
 
-    let $toDoBy = $("<small>").text(data.completeBy.substring(10, -1));
-
-    $mainContainer.append($toDoBy);
-
     let $checkButton = $("<div>").addClass("btn-group").attr("data-toggle", "buttons");
     let $labelButton = $("<label>").addClass("btn btn-success active");
     let $inputButton = $("<input>").attr("type", "checkbox").attr("autocomplete", "off");
@@ -252,13 +248,12 @@ $(document).ready(function() {
     let today = new Date();
     let dateCreated = (`${today.getFullYear()}-${today.getMonth()+1}-${today.getDate()}`);
     let commentInput = $("#commentInput").val();
-    let toDoBy = ($('#date').val())
 
     $.ajax({
     type: "POST",
     url: "/newToDo",
     async: false,
-    data: {name: tdname, user: todoUser, category: 3, createdOn: dateCreated, completeBy: dateCreated, comment: commentInput, checked: false}
+    data: {name: tdname, user: todoUser, category: 3, createdOn: dateCreated, comment: commentInput, checked: false}
     })
     .done(location.reload());
   });
@@ -273,13 +268,12 @@ $(document).ready(function() {
   $(".editToDo").submit(function(event) {
     event.preventDefault();
     let commentEdit = ($('#commentEdit').val());
-    let date = ($('#dateEdit').val());
 
     $.ajax({
     type: "POST",
     url: "/editToDo",
     async: false,
-    data: {id: uniqueElemId, category: editCategory, completeBy: date, comment: commentEdit}
+    data: {id: uniqueElemId, category: editCategory, comment: commentEdit}
     })
     .done(location.reload());
   });
