@@ -113,7 +113,7 @@ app.post("/login", (data, res) => {
 		}
 	})
 	.catch(function(error) {
-  		console.error(error);
+		res.status(201).send('password wrong!');
 	});
 });
 
