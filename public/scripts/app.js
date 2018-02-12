@@ -200,6 +200,7 @@ $(document).ready(function() {
     });
   });
 
+
   //AJAX for registration form
    $('.regForm').submit(function(event) {
     event.preventDefault();
