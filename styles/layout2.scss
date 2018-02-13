@@ -40,7 +40,7 @@ nav {
     font-size: 50px;
     position: fixed;
     left: 40%;
-    top: -0.3%;
+    top: -0.05%;
   }
 }
 
@@ -162,6 +162,10 @@ input[type=text], input[type=password] {
   padding: 16px;
 }
 
+.col-sm-3{
+  max-width: 50%;
+}
+
 .myModal {
   display: none;
   position: fixed;
@@ -169,6 +173,7 @@ input[type=text], input[type=password] {
   left: 75%;
   top: 10%;
   width: 25%;
+  max-width: 50%;
   background-color: rgba(215, 215, 215, 0.99);
   border: solid 1px black;
   border-radius: 10px;
