@@ -18,12 +18,21 @@ nav {
   border-bottom: 1px solid black;
 
   button {
-    background-color: rgba(155,189,191,0.55);
+    background-color: rgba(155,189,191,0.35);
     border: 0.5px solid black;
     opcaity: 0.9;
     float: right;
     margin-top: 10px;
     z-index: 200;
+    margin-right: 3px;
+
+    &:hover {
+      background-color: rgba(255,255,255,0.35);
+    }
+
+    &:active{
+      transform: translateY(4px);
+    }
   }
 
   span {
