@@ -33,3 +33,9 @@ Project Konjosh is a smart autocategorizing To-Do app.
 - OMDB Api Client
 - PostgreSQL
 - PopperJS
+
+## Screenshots 
+
+!["Screenshot of Home Page"](https://github.com/surfman-k/SmartToDoApp/blob/master/docs/home.png)
+!["Screenshot of New ToDo Form"](https://github.com/surfman-k/SmartToDoApp/blob/master/docs/addToDo.png)
+!["Screenshot after ToDo was auto-categorized"](https://github.com/surfman-k/SmartToDoApp/blob/master/docs/Autocategorized.png)
